@@ -21,7 +21,7 @@ get_header(); ?>
 <?php
 
 	$post                = get_post();
-	$attachment_size     = apply_filters( 'birdsnap', array( 930, 930 ) );
+	$attachment_size     = apply_filters( 'birdstar', array( 930, 930 ) );
 	$next_attachment_url = wp_get_attachment_url();
 	$attachment_ids = get_posts( array(
 		'post_parent'    => $post->post_parent,
@@ -67,7 +67,7 @@ get_header(); ?>
 				</div>
 
 				<?php the_content(); ?>
-				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'birdsnap' ), 'after' => '</div>' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'birdstar' ), 'after' => '</div>' ) ); ?>
 
 			</div>
 
@@ -81,8 +81,8 @@ get_header(); ?>
 		</article>
 
 		<nav id="nav-below">
-			<span class="nav-previous"><?php next_image_link( false, __( 'Next Image' , 'birdsnap' ) ); ?></span>
-			<span class="nav-next"><?php previous_image_link( false, __( 'Previous Image' , 'birdsnap' ) ); ?></span>
+			<span class="nav-previous"><?php next_image_link( false, __( 'Next Image' , 'birdstar' ) ); ?></span>
+			<span class="nav-next"><?php previous_image_link( false, __( 'Previous Image' , 'birdstar' ) ); ?></span>
 		</nav>
 
 	<?php endwhile; ?>

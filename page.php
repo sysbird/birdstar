@@ -4,8 +4,9 @@ The template for displaying all pages.
 */
 get_header(); ?>
 
-<div id="content">
-	<div class="container">
+<div class="container">
+	<div id="main">
+		<div id="content">
 
 <?php while ( have_posts() ) : the_post(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -14,7 +15,11 @@ get_header(); ?>
 	</article>
 <?php endwhile; ?>
 
-	</div>
-</div>
+		</div><!-- #content -->
+	</div><!-- #main -->
+
+	<?php get_sidebar('left'); ?>
+
+</div><!-- .container -->
 
 <?php get_footer(); ?>

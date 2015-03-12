@@ -6,7 +6,7 @@
 		</aside>
 
 		<aside id="meta" class="widget">
-			<h3 class="widget-title"><?php _e( 'Meta', 'birdtips' ); ?></h3>
+			<h3 class="widget-title"><?php _e( 'Meta', 'birdstar' ); ?></h3>
 			<ul>
 				<?php wp_register(); ?>
 				<aside><?php wp_loginout(); ?></aside>

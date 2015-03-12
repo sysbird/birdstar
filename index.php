@@ -13,7 +13,7 @@ get_header(); ?>
 					<?php get_template_part( 'content', get_post_format() ); ?>
 				<?php endwhile; ?>
 			</ul>
-			<div class="tablenav"><?php BirdSNAP::the_pagenation(); ?></div>
+			<div class="tablenav"><?php BirdSTAR::the_pagenation(); ?></div>
 
 		</div><!-- #content -->
 	</div><!-- #main -->

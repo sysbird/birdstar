@@ -8,8 +8,8 @@ Author URI: http://www.sysbird.jp/wptips/
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: green, one-column, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
-Text Domain: birdsnap
+Tags: white, two-columns, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
+Text Domain: birdstar
 
 This theme, like WordPress, is licensed under the GPL.
 */
@@ -87,14 +87,10 @@ body {
   width: 100%; }
 
 .container {
-  width: 100%;
+  width: 96%;
   margin: 0 auto;
   padding: 0;
   position: relative; }
-
-#header .container,
-#footer .container {
-  width: 96%; }
 
 #sidebar {
   margin: 0 auto; }
@@ -122,8 +118,7 @@ body {
 -------------------------------------------------------------- */
 .wrapper {
   font-family: Verdana,Arial, Meiryo , "Hiragino Kaku Gothic Pro" ,sans-serif;
-  background: url("images/contents_bg.jpg") repeat left top;
-  background: #999;
+  background: #FFF;
   color: #555555;
   overflow: hidden; }
   .wrapper * {
@@ -137,12 +132,11 @@ body {
 -------------------------------------------------------------- */
 #header {
   position: relative;
-  background-color: #FFF;
-  color: #ff7e10; }
+  color: black; }
   #header a {
-    color: #ff7e10; }
+    color: black; }
   #header #branding {
-    padding: 0.8em 0; }
+    padding: 1.6em 0 0.8em; }
     #header #branding #site-title {
       margin: 0;
       padding: 0;
@@ -176,7 +170,7 @@ body {
     display: block;
     padding: 5px;
     font-size: 1rem;
-    background: #ff7e10;
+    background: black;
     color: #FFF;
     border-radius: 4px;
     font-size: 1.4rem; }
@@ -204,22 +198,21 @@ body {
         color: #555555;
         text-decoration: none;
         line-height: 1.2;
-        border-bottom: dotted 1px #e5e5e5;
+        border-bottom: dotted 1px #dddddd;
         *white-space: nowrap;
         /* IE7 and below */ }
         #menu-wrapper .menu ul#menu-primary-items li a:hover {
-          color: #ff7e10; }
+          color: black; }
       #menu-wrapper .menu ul#menu-primary-items li ul {
         padding-left: 0.8em; }
     #menu-wrapper .menu ul#menu-primary-items .current-menu-item > a,
     #menu-wrapper .menu ul#menu-primary-items .current-menu-ancestor > a,
     #menu-wrapper .menu ul#menu-primary-items .current-menu-parent > a {
-      color: #ff7e10; }
+      color: black; }
 
 /* Posts
 --------------------------------------------- */
 #content {
-  background: url("images/bg_lightgrey.jpg") repeat left top;
   padding-bottom: 1.6em; }
   #content .content-header {
     margin: 0;
@@ -239,7 +232,7 @@ body {
   #content .hentry {
     width: 100%;
     word-wrap: break-word;
-    padding: 1.6em 10px 0;
+    padding: 1.6em 0 0;
     overflow: hidden;
     *zoom: 1; }
     #content .hentry .entry-eyecatch {
@@ -269,28 +262,6 @@ body {
       #content .hentry .entry-meta a,
       #content .hentry .entry-footer a {
         color: #999999; }
-      #content .hentry .entry-meta .postdate:before,
-      #content .hentry .entry-footer .postdate:before {
-        content: "\f073";
-        display: inline-block;
-        font-family: FontAwesome;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 1;
-        padding-right: 0.2em;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale; }
-      #content .hentry .entry-meta .author:before,
-      #content .hentry .entry-footer .author:before {
-        content: "\f007";
-        display: inline-block;
-        font-family: FontAwesome;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 1;
-        padding-right: 0.2em;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale; }
       #content .hentry .entry-meta .comment:before,
       #content .hentry .entry-footer .comment:before {
         content: "\f075";
@@ -344,8 +315,7 @@ body {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale; }
     #content .hentry .entry-footer {
-      background-color: #FFF;
-      border: dashed 1px #e5e5e5;
+      border: dashed 1px #dddddd;
       padding: 0.8em; }
     #content .hentry .page-links {
       clear: both;
@@ -363,7 +333,7 @@ body {
         border-bottom: solid 2px #00acf0; }
       #content .hentry .page-links a span {
         color: #555555;
-        border-color: #e5e5e5; }
+        border-color: #dddddd; }
         #content .hentry .page-links a span:hover {
           border-color: #00acf0; }
     #content .hentry a.more-link {
@@ -421,7 +391,7 @@ body {
   #content #comments blockquote {
     margin-left: 1em;
     padding-left: 1em;
-    border-left: 10px solid #e5e5e5; }
+    border-left: 10px solid #dddddd; }
     #content .entry-content blockquote small,
     #content #comments blockquote small {
       display: block;
@@ -448,18 +418,18 @@ body {
     #content .entry-content table td,
     #content #comments table th,
     #content #comments table td {
-      border-bottom: 1px solid #e5e5e5;
+      border-bottom: 1px solid #dddddd;
       line-height: 1.4;
       padding: 0.8em;
       text-align: left;
       vertical-align: top; }
     #content .entry-content table th,
     #content #comments table th {
-      border-bottom: 2px solid #e5e5e5;
+      border-bottom: 2px solid #dddddd;
       font-weight: bold; }
   #content .entry-content pre,
   #content #comments pre {
-    border: dashed 1px #e5e5e5;
+    border: dashed 1px #dddddd;
     background: #FFF;
     padding: 0.8em;
     margin-bottom: 1.6em;
@@ -610,7 +580,7 @@ a:hover img {
   text-align: center; }
 #content .hentry .wp-caption {
   padding: 5px;
-  background: #e5e5e5;
+  background: #dddddd;
   max-width: 100%; }
   #content .hentry .wp-caption p {
     text-align: center;
@@ -700,7 +670,7 @@ video {
     #content #comments ol.commentlist ul {
       margin-left: 40px; }
   #content #comments li {
-    border-bottom: dashed 1px #e5e5e5; }
+    border-bottom: dashed 1px #dddddd; }
     #content #comments li li {
       border: none; }
     #content #comments li .comment_meta .author {
@@ -736,7 +706,7 @@ video {
       -moz-osx-font-smoothing: grayscale;
       padding-left: 0.2em; }
     #content #comments li.bypostauthor .comment_meta .author {
-      color: #ff7e10; }
+      color: black; }
     #content #comments li .postdate {
       color: #999; }
       #content #comments li .postdate:before {
@@ -755,7 +725,7 @@ video {
 /* Forms
 -------------------------------------------------------------- */
 #content #comments #commentform {
-  border: dashed 1px #e5e5e5;
+  border: dashed 1px #dddddd;
   padding: 10px 15px 0 15px;
   margin: 15px 0;
   max-width: 650px;
@@ -772,34 +742,28 @@ video {
     max-width: 300px;
     padding: 5px;
     background: #FFF;
-    border: solid 1px #e5e5e5; }
+    border: solid 1px #dddddd; }
   #content #comments #commentform textarea {
     width: 100%;
     height: 100px;
     padding: 5px;
     background: #FFF;
-    border: solid 1px #e5e5e5; }
+    border: solid 1px #dddddd; }
   #content #comments #commentform input#submit {
     padding: 0.8em 1.6em; }
   #content #comments #commentform .form-allowed-tags {
     font-size: 0.9em;
     padding: 0.4em;
-    border: dashed 1px #e5e5e5; }
+    border: dashed 1px #dddddd; }
   #content #comments #commentform .form-allowed-tags code {
     display: block; }
 
 /* Sidebar
 --------------------------------------------- */
 #sidebar {
-  padding: 1.6em 0.8em 0;
-  color: #FFF; }
-  #sidebar a {
-    color: #FFF; }
+  padding: 1.6em 0.8em 0; }
   #sidebar .widget {
     margin: 0 0 1.6em 0; }
-    #sidebar .widget h3 {
-      border-bottom: solid 2px #e5e5e5;
-      color: #e5e5e5; }
 
 /* Footer
 --------------------------------------------- */
@@ -807,10 +771,9 @@ video {
   position: relative; }
   #footer .site-title {
     padding: 1.6em 0;
-    color: #FFF;
     line-height: 1.4; }
     #footer .site-title a {
-      color: #FFF; }
+      color: #555555; }
     #footer .site-title strong {
       font-weight: bold; }
     #footer .site-title .generator:after {
@@ -862,44 +825,10 @@ video {
         padding: 0;
         color: #999; }
 
-/* jagged border
---------------------------------------------- */
-hr.jagged {
-  position: relative;
-  border: none;
-  margin: 0;
-  background-color: #FFF; }
-
-hr.jagged.bottom:before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -10px;
-  width: 100%;
-  height: 10px; }
-
-hr.jagged.bottom:before {
-  background-image: linear-gradient(-135deg, #ffffff 5px, transparent 0px), linear-gradient(135deg, #ffffff 5px, transparent 0px);
-  background-size: 10px 10px;
-  -webkit-background-size: 10px 10px; }
-
-hr.jagged.top:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -10px;
-  width: 100%;
-  height: 10px; }
-
-hr.jagged.top:before {
-  background-image: linear-gradient(-45deg, #ffffff 5px, transparent 0px), linear-gradient(45deg, #ffffff 5px, transparent 0px);
-  background-size: 10px 10px;
-  -webkit-background-size: 10px 10px; }
-
 /* Widget
 --------------------------------------------- */
 #widget-area {
-  background: #FFF;
+  background: #F5F5F5;
   overflow: hidden;
   *zoom: 1; }
 
@@ -918,8 +847,8 @@ hr.jagged.top:before {
     font-weight: normal;
     margin: 0 0 0.4em 0;
     padding: 0 0 0.4em 0;
-    border-bottom: solid 2px #555555;
-    color: #555555;
+    border-bottom: solid 2px #dddddd;
+    color: #999999;
     font-size: 1.4rem; }
   .widget ul {
     list-style: none;
@@ -928,7 +857,7 @@ hr.jagged.top:before {
     overflow: hidden; }
     .widget ul li {
       margin-top: -1px;
-      border-top: dotted 1px #FFF;
+      border-top: dotted 1px #dddddd;
       padding: 0.3em 0 0.3em 0.6em;
       text-indent: -0.3em; }
       .widget ul li:before {
@@ -961,7 +890,7 @@ hr.jagged.top:before {
     .widget #wp-calendar tbody th,
     .widget #wp-calendar tbody td {
       text-align: center;
-      border-top: 1px solid #FFF;
+      border-top: 1px solid #dddddd;
       padding: 8px; }
       .widget #wp-calendar tbody th a,
       .widget #wp-calendar tbody td a {
@@ -973,23 +902,19 @@ hr.jagged.top:before {
         .widget #wp-calendar tbody th a:hover,
         .widget #wp-calendar tbody td a:hover {
           background: #00acf0;
-          color: #FFF;
+          color: #dddddd;
           text-decoration: none; }
     .widget #wp-calendar thead th {
       padding: 8px;
       text-align: center; }
     .widget #wp-calendar tfoot {
-      border-top: 1px solid #e5e5e5; }
+      border-top: 1px solid #dddddd; }
       .widget #wp-calendar tfoot a {
         font-size: 1.2em; }
       .widget #wp-calendar tfoot #next {
         text-align: right; }
       .widget #wp-calendar tfoot td {
         padding: 8px 0; }
-  .widget #searchform #s {
-    border-left: solid 2px #e5e5e5;
-    border-top: solid 2px #e5e5e5;
-    border-bottom: solid 2px #e5e5e5; }
 
 /* Searcform
 --------------------------------------------- */
@@ -1008,7 +933,9 @@ hr.jagged.top:before {
     height: 30px;
     line-height: 1;
     border-radius: 4px 0 0 4px;
-    border: none; }
+    border-left: solid 2px #dddddd;
+    border-top: solid 2px #dddddd;
+    border-bottom: solid 2px #dddddd; }
   #searchform #searchsubmit {
     position: absolute;
     top: 0;
@@ -1043,7 +970,7 @@ hr.jagged.top:before {
   .search #content ul.article li.hentry {
     padding: 0;
     margin: 0;
-    border-bottom: solid 1px #e5e5e5;
+    border-bottom: solid 1px #dddddd;
     overflow: hidden;
     *zoom: 1; }
     .archive #content ul.article li.hentry a,
@@ -1135,7 +1062,7 @@ hr.jagged.top:before {
   .tablenav .current {
     display: inline-block;
     color: #555555;
-    border-bottom: solid 2px #e5e5e5;
+    border-bottom: solid 2px #dddddd;
     text-decoration: none;
     text-align: center;
     padding: 0.4em 0.8em;
@@ -1165,20 +1092,10 @@ hr.jagged.top:before {
 --------------------------------------------- */
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
-  .container {
-    width: 96%; }
-
-  #header {
-    *zoom: 1; }
-    #header:after {
-      clear: both;
-      content: "";
-      display: block; }
-    #header #branding {
-      float: left; }
+  #header #branding {
+    padding-top: 3.2em; }
 
   #menu-wrapper {
-    font-size: 0.8em;
     padding-bottom: 0;
     *zoom: 1; }
     #menu-wrapper:after {
@@ -1189,15 +1106,19 @@ hr.jagged.top:before {
       display: none; }
     #menu-wrapper .menu ul#menu-primary-items {
       display: block !important;
-      text-align: right; }
+      border-top: solid 1px #dddddd;
+      border-bottom: solid 2px #dddddd;
+      padding: 0.8em 0; }
       #menu-wrapper .menu ul#menu-primary-items > li {
-        display: inline-block; }
+        display: inline-block;
+        border-left: solid 1px #dddddd; }
         #menu-wrapper .menu ul#menu-primary-items > li > a {
           text-align: center;
-          margin-right: 5px;
-          padding: 0.8em 0 0.8em 0.8em; }
+          padding: 0.8em 1.6em; }
         #menu-wrapper .menu ul#menu-primary-items > li.current-menu-item a {
           border-color: #000; }
+        #menu-wrapper .menu ul#menu-primary-items > li:first-child {
+          border: none; }
       #menu-wrapper .menu ul#menu-primary-items li {
         position: relative;
         text-align: left; }
@@ -1226,7 +1147,7 @@ hr.jagged.top:before {
           top: 2.8em;
           left: 0;
           border: solid 1px #EEE;
-          border-top: solid 2px #ff7e10;
+          border-top: solid 2px black;
           z-index: 9999; }
           #menu-wrapper .menu ul#menu-primary-items li ul li {
             margin: 0;
@@ -1245,7 +1166,7 @@ hr.jagged.top:before {
             #menu-wrapper .menu ul#menu-primary-items li ul li a {
               background-color: #FFF;
               color: #555555;
-              border-top: solid 1px #e5e5e5;
+              border-top: solid 1px #dddddd;
               border-bottom: none;
               height: auto;
               padding: 0.8em 0.4em;
@@ -1264,7 +1185,7 @@ hr.jagged.top:before {
   #content .content-header {
     padding: 1.6em 1.6em 0.8em; }
   #content .hentry {
-    padding: 1.6em 1.6em 0; }
+    padding: 1.6em 0.8em 0 0; }
 
   #sidebar {
     float: right;
@@ -1286,9 +1207,7 @@ hr.jagged.top:before {
     padding: 0 1.6em; } }
 /* --- PCs --- */
 @media screen and (min-width: 930px) {
-  .container,
-  #header .container,
-  #footer .container {
+  .container {
     width: 930px; }
 
   #header #branding #site-title a {

@@ -18,14 +18,14 @@ The Header for our theme.
 </head>
 <body <?php body_class(); ?>>
 
-<?php $birdsnap_header_image = get_header_image(); ?>
-<?php if( ! empty( $birdsnap_header_image ) ): ?>
+<?php $birdstar_header_image = get_header_image(); ?>
+<?php if( ! empty( $birdstar_header_image ) ): ?>
 	<div id="headerimage">
 		<img src="<?php header_image(); ?>" alt="<?php bloginfo( 'name' ); ?>">
 	</div>
 <?php endif; ?>
 
-<div <?php BirdSNAP::wrapper_class('wrapper'); ?>>
+<div <?php BirdSTAR::wrapper_class('wrapper'); ?>>
 	<header id="header">
 		<div class="container">
 			<div id="branding">
@@ -37,8 +37,7 @@ The Header for our theme.
 			</div>
 
 			<nav id="menu-wrapper">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu', 'menu_class' => '', 'menu_id' => 'menu-primary-items', 'items_wrap' => '<div id="small-menu">' .__( 'Menu', 'BirdSNAP' ) .'</div><ul id="%1$s" class="%2$s">%3$s</ul>', 'fallback_cb' => '' ) ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu', 'menu_class' => '', 'menu_id' => 'menu-primary-items', 'items_wrap' => '<div id="small-menu">' .__( 'Menu', 'BirdSTAR' ) .'</div><ul id="%1$s" class="%2$s">%3$s</ul>', 'fallback_cb' => '' ) ); ?>
 			</nav>
 		</div>
-		<hr class="jagged bottom">
 	</header>

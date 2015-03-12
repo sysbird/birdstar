@@ -8,8 +8,8 @@ Author URI: http://www.sysbird.jp/wptips/
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: green, one-column, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
-Text Domain: birdsnap
+Tags: white, two-columns, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
+Text Domain: birdstar
 
 This theme, like WordPress, is licensed under the GPL.
 */
@@ -20,8 +20,8 @@ This theme, like WordPress, is licensed under the GPL.
 // variable
 $text-color: #555;
 $link-color: #00acf0;
-$accent-color: #FF7E10;
-$border-color: #E5E5E5;
+$accent-color: #000;
+$border-color: #DDD;
 $meta-color: #999;
 
 /*------------------------------
@@ -66,15 +66,10 @@ body {
 }
 
 .container {
-	width: 100%;
+	width: 96%;
 	margin: 0 auto;
 	padding: 0;
 	position: relative;
-}
-
-#header .container,
-#footer .container {
-	width: 96%;
 }
 
 #sidebar {
@@ -109,8 +104,7 @@ body {
 -------------------------------------------------------------- */
 .wrapper {
 	font-family: Verdana,Arial, Meiryo , "Hiragino Kaku Gothic Pro" ,sans-serif;
-	background: url("images/contents_bg.jpg") repeat left top;
-	background: #999;
+	background: #FFF;
 	color: $text-color;
 	overflow: hidden;
 
@@ -127,8 +121,6 @@ body {
 -------------------------------------------------------------- */
 #header {
 	position: relative;
-	background-color: #FFF;
-
 	color: $accent-color;
 
 	a {
@@ -136,7 +128,7 @@ body {
 	}
 
 	#branding {
-		padding: 0.8em 0;
+		padding: 1.6em 0 0.8em;
 
 		#site-title {
 			margin: 0;
@@ -234,7 +226,6 @@ body {
 /* Posts
 --------------------------------------------- */
 #content {
-	background: url("images/bg_lightgrey.jpg") repeat left top;
 	padding-bottom: 1.6em;
 
 	.content-header {
@@ -263,7 +254,7 @@ body {
 	.hentry {
 		width: 100%;
 		word-wrap: break-word;
-		padding: 1.6em 10px 0;
+		padding: 1.6em 0 0;
 		@include clearfix;
 
 		.entry-eyecatch {
@@ -308,18 +299,6 @@ body {
 				color: $meta-color;
 			}
 
-			.postdate {
-				&:before {
-				    @include font-awesome("\f073");
-				}
-			}
-
-			.author {
-				&:before {
-				    @include font-awesome("\f007");
-				}
-			}
-
 			.comment {
 				&:before {
 				    @include font-awesome("\f075");
@@ -352,7 +331,6 @@ body {
 		}
 
 		.entry-footer {
-			background-color: #FFF;
 			border: dashed 1px $border-color;
 			padding: 0.8em;
 		}
@@ -915,19 +893,9 @@ video {
 --------------------------------------------- */
 #sidebar {
 	padding: 1.6em 0.8em 0;
-	color: #FFF;
-
-	a {
-		color: #FFF;
-	}
 
 	.widget {
 		margin: 0 0 1.6em 0;
-
-		h3 {
-			border-bottom: solid 2px $border-color;
-			color: $border-color;
-		}
 	}
 }
 
@@ -938,11 +906,10 @@ video {
 
 	.site-title {
 		padding: 1.6em 0;
-		color: #FFF;
 		line-height: 1.4;
 
 		a {
-			color: #FFF;
+			color: $text-color;
 		}
 
 		strong {
@@ -995,50 +962,10 @@ video {
 	}
 }
 
-
-/* jagged border
---------------------------------------------- */
-hr.jagged {
-  position: relative;
-  border: none;
-  margin: 0;
-  background-color: #FFF;
-}
-
-hr.jagged.bottom:before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -10px;
-  width: 100%;
-  height: 10px;
-}
-
-hr.jagged.bottom:before {
-	background-image: linear-gradient(-135deg, #FFF 5px, transparent 0px), linear-gradient(135deg, #FFF 5px, transparent 0px);
-	background-size: 10px 10px;
-	-webkit-background-size: 10px 10px;
-}
-
-hr.jagged.top:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -10px;
-  width: 100%;
-  height: 10px;
-}
-
-hr.jagged.top:before {
-	background-image: linear-gradient(-45deg, #FFF 5px, transparent 0px), linear-gradient(45deg, #FFF 5px, transparent 0px);
-	background-size: 10px 10px;
-	-webkit-background-size: 10px 10px;
-}
-
 /* Widget
 --------------------------------------------- */
 #widget-area {
-	background: #FFF;
+	background: #F5F5F5;
 	@include clearfix;
 }
 
@@ -1064,8 +991,8 @@ hr.jagged.top:before {
 		font-weight: normal;
 		margin: 0 0 0.4em 0;
 		padding: 0 0 0.4em 0;
-		border-bottom: solid 2px $text-color;
-		color: $text-color;
+		border-bottom: solid 2px $border-color;
+		color: $meta-color;
 		font-size: 1.4rem;
 	}
 
@@ -1077,7 +1004,7 @@ hr.jagged.top:before {
 
 		li {
 			margin-top: -1px;
-			border-top: dotted 1px #FFF;
+			border-top: dotted 1px $border-color;
 			padding: 0.3em 0 0.3em 0.6em;
 			text-indent: -0.3em;
 
@@ -1121,7 +1048,7 @@ hr.jagged.top:before {
 			th,
 			td {
 				text-align: center;
-				border-top: 1px solid #FFF;
+				border-top: 1px solid $border-color;
 				padding: 8px;
 
 				a {
@@ -1133,7 +1060,7 @@ hr.jagged.top:before {
 
 					&:hover {
 						background: $link-color;
-						color: #FFF;
+						color: $border-color;
 						text-decoration: none;
 					}
 				}
@@ -1164,14 +1091,6 @@ hr.jagged.top:before {
 			}
 		}
 	}
-
-	#searchform {
-		#s {
-			border-left: solid 2px $border-color;
-			border-top: solid 2px $border-color;
-			border-bottom: solid 2px $border-color;
-		}
-	}
 }
 
 /* Searcform
@@ -1194,7 +1113,9 @@ hr.jagged.top:before {
 		height: 30px;
 		line-height: 1;
 		border-radius: 4px 0 0 4px;
-		border: none;
+		border-left: solid 2px $border-color;
+		border-top: solid 2px $border-color;
+		border-bottom: solid 2px $border-color;
 	}
 
 	#searchsubmit {
@@ -1368,26 +1289,13 @@ hr.jagged.top:before {
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
 
-	.container {
-		width: 96%;
-	}
-
 	#header {
-		*zoom: 1;
-		&:after {
-		    clear: both;
-   			content: "";
-    		display: block;
-		}
-
 		#branding {
-			float: left;
+			padding-top: 3.2em;
 		}
-
 	}
 
 	#menu-wrapper {
-		font-size: 0.8em;
 		padding-bottom: 0;
 
 		*zoom: 1;
@@ -1404,19 +1312,25 @@ hr.jagged.top:before {
 
 			ul#menu-primary-items {
 				display: block !important;
-				text-align: right;
+				border-top: solid 1px $border-color;
+				border-bottom: solid 2px $border-color;
+				padding: 0.8em 0;
 
 				> li {
 					display: inline-block;
+					border-left: solid 1px $border-color;
 
 					> a {
 						text-align: center;
-						margin-right: 5px;
-						padding: 0.8em 0 0.8em 0.8em;
+						padding: 0.8em 1.6em;
 					}
 
 					&.current-menu-item a {
 						border-color: #000;
+					}
+
+					&:first-child {
+						border: none;
 					}
 				}
 
@@ -1499,7 +1413,7 @@ hr.jagged.top:before {
 		}
 
 		.hentry {
-			padding: 1.6em 1.6em 0;
+			padding: 1.6em 0.8em 0 0;
 		}
 	}
 
@@ -1537,9 +1451,7 @@ hr.jagged.top:before {
 /* --- PCs --- */
 @media screen and (min-width: 930px) {
 
-	.container,
-	#header .container,
-	#footer .container {
+	.container {
 		width: 930px;
 	}
 

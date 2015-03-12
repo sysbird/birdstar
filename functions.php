@@ -1,22 +1,22 @@
 <?php
 /*
-birdsnap functions and definitions.
+birdstar functions and definitions.
 */
-function birdsnap_setup() {
-	if ( !class_exists( 'BirdSNAP' ) ) {
-		class BirdSNAP extends BirdSNAPFunctions {
+function birdstar_setup() {
+	if ( !class_exists( 'BirdSTAR' ) ) {
+		class BirdSTAR extends BirdSTARFunctions {
 			public function __construct() {
 				parent::__construct();
 			}
 		}
 	}
-	$BirdSNAP = new BirdSNAP();
+	$BirdSTAR = new BirdSTAR();
 }
-add_action( 'after_setup_theme', 'birdsnap_setup', 99999 );
+add_action( 'after_setup_theme', 'birdstar_setup', 99999 );
 
 //////////////////////////////////////////
 // Set the content width based on the theme's design and stylesheet.
-class BirdSNAPFunctions {
+class BirdSTARFunctions {
 
 	//////////////////////////////////////////////////////
 	// __construct
@@ -40,7 +40,7 @@ class BirdSNAPFunctions {
 	protected function setup() {
 
 		// Set languages
-		load_theme_textdomain( 'birdsnap', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'birdstar', get_template_directory() . '/languages' );
 
 		// This theme styles the visual editor with editor-style.css to match the theme style.
 		add_editor_style();
@@ -64,12 +64,12 @@ class BirdSNAPFunctions {
 			'default-color' => null,
 			'default-image' => '',
 			'default-color' => 'FFF',
-			'wp-head-callback' => 'BirdSNAP::custom_background_cb',
+			'wp-head-callback' => 'BirdSTAR::custom_background_cb',
 		) );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'primary' => __( 'Navigation Menu', 'birdsnap' ),
+			'primary' => __( 'Navigation Menu', 'birdstar' ),
 		) );
 
 
@@ -89,18 +89,18 @@ class BirdSNAPFunctions {
 			'random-default'         => true,
 
 			// Callbacks for styling the header and the admin preview.
-			'wp-head-callback' => 'BirdSNAP::header_style',
-			'admin-head-callback' => 'BirdSNAP::admin_header_style',
-			'admin-preview-callback' => 'BirdSNAP::admin_header_image'
+			'wp-head-callback' => 'BirdSTAR::header_style',
+			'admin-head-callback' => 'BirdSTAR::admin_header_style',
+			'admin-preview-callback' => 'BirdSTAR::admin_header_image'
 		);
 
 		add_theme_support( 'custom-header', $custom_header_support );
 
 		register_default_headers( array(
-			'birdsnap' => array(
+			'birdstar' => array(
 				'url' => '%s/images/header.jpg',
 				'thumbnail_url' => '%s/images/header-thumbnail.jpg',
-				'description' => 'birdsnap'
+				'description' => 'birdstar'
 			)
 		) );
 	}
@@ -117,9 +117,9 @@ class BirdSNAPFunctions {
 	public function widgets_init() {
 
 		register_sidebar( array (
-			'name' => __( 'Widget Area for right-sidebar', 'birdsnap' ),
+			'name' => __( 'Widget Area for right-sidebar', 'birdstar' ),
 			'id' => 'widget-area-sidebar',
-			'description' => __( 'Widget Area for right-sidebar', 'birdsnap' ),
+			'description' => __( 'Widget Area for right-sidebar', 'birdstar' ),
 			'before_widget' => '<div class="widget">',
 			'after_widget' => '</div>',
 			'before_title' => '<h3>',
@@ -127,9 +127,9 @@ class BirdSNAPFunctions {
 			) );
 
 		register_sidebar( array (
-			'name' => __( 'Widget Area for footer', 'birdsnap' ),
+			'name' => __( 'Widget Area for footer', 'birdstar' ),
 			'id' => 'widget-area-footer',
-			'description' => __( 'Widget Area for footer', 'birdsnap' ),
+			'description' => __( 'Widget Area for footer', 'birdstar' ),
 			'before_widget' => '<div class="widget">',
 			'after_widget' => '</div>',
 			'before_title' => '<h3>',
@@ -151,7 +151,7 @@ class BirdSNAPFunctions {
 			$birstips_author = get_comment_author();
 		 ?> 
 
-			<div class="posted"><strong><?php _e( 'Pingback', 'birdsnap' ); ?> : </strong><a href="<?php echo $birstips_url; ?>" target="_blank" class="web"><?php echo $birstips_author ?></a><?php edit_comment_link( __('(Edit)', 'birdsnap'), ' ' ); ?></div>
+			<div class="posted"><strong><?php _e( 'Pingback', 'birdstar' ); ?> : </strong><a href="<?php echo $birstips_url; ?>" target="_blank" class="web"><?php echo $birstips_author ?></a><?php edit_comment_link( __('(Edit)', 'birdstar'), ' ' ); ?></div>
 
 		<?php else: ?>
 
@@ -161,15 +161,15 @@ class BirdSNAPFunctions {
 				<span class="postdate"><?php echo get_comment_time(get_option('date_format') .' ' .get_option('time_format')); ?></span><?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div>
 			<?php if ( $comment->comment_approved == '0' ) : ?>
-				<em><?php _e( 'Your comment is awaiting moderation.', 'birdsnap' ); ?></em>
+				<em><?php _e( 'Your comment is awaiting moderation.', 'birdstar' ); ?></em>
 			<?php endif; ?>
 
 			<div class="comment_text">
 				<?php comment_text(); ?>
 
-				<?php $birdsnap_web = get_comment_author_url(); ?>
-				<?php if(!empty($birdsnap_web)): ?>
-					<p class="web"><a href="<?php echo $birdsnap_web; ?>" target="_blank"><?php echo $birdsnap_web; ?></a></p>
+				<?php $birdstar_web = get_comment_author_url(); ?>
+				<?php if(!empty($birdstar_web)): ?>
+					<p class="web"><a href="<?php echo $birdstar_web; ?>" target="_blank"><?php echo $birdstar_web; ?></a></p>
 				<?php endif; ?>
 			</div>
 
@@ -180,13 +180,13 @@ class BirdSNAPFunctions {
 
 	//////////////////////////////////////////////////////
 	// Header markup
-	public function wrapper_class($birdsnap_class) {
+	public function wrapper_class($birdstar_class) {
 
 		if ( 'blank' == get_header_textcolor() ) {
-			$birdsnap_class .= ' no-title';
+			$birdstar_class .= ' no-title';
 		}
 
-		echo 'class="' .$birdsnap_class .'"';
+		echo 'class="' .$birdstar_class .'"';
 	}
 
 	//////////////////////////////////////////////////////
@@ -197,18 +197,18 @@ class BirdSNAPFunctions {
 		global $wp_query;
 		global $paged;
 
-		$birdsnap_paginate_base = get_pagenum_link( 1 );
-		if ( strpos($birdsnap_paginate_base, '?' ) || ! $wp_rewrite->using_permalinks() ) {
-			$birdsnap_paginate_format = '';
-			$birdsnap_paginate_base = add_query_arg( 'paged', '%#%' );
+		$birdstar_paginate_base = get_pagenum_link( 1 );
+		if ( strpos($birdstar_paginate_base, '?' ) || ! $wp_rewrite->using_permalinks() ) {
+			$birdstar_paginate_format = '';
+			$birdstar_paginate_base = add_query_arg( 'paged', '%#%' );
 		} else {
-			$birdsnap_paginate_format = ( substr( $birdsnap_paginate_base, -1 ,1 ) == '/' ? '' : '/' ) .
+			$birdstar_paginate_format = ( substr( $birdstar_paginate_base, -1 ,1 ) == '/' ? '' : '/' ) .
 			user_trailingslashit( 'page/%#%/', 'paged' );;
-			$birdsnap_paginate_base .= '%_%';
+			$birdstar_paginate_base .= '%_%';
 		}
 		echo paginate_links( array(
-			'base' => $birdsnap_paginate_base,
-			'format' => $birdsnap_paginate_format,
+			'base' => $birdstar_paginate_base,
+			'format' => $birdstar_paginate_format,
 			'total' => $wp_query->max_num_pages,
 			'mid_size' => 3,
 			'current' => ( $paged ? $paged : 1 ),
@@ -219,9 +219,9 @@ class BirdSNAPFunctions {
 	// Copyright Year
 	public function get_copyright_year() {
 
-		$birdsnap_copyright_year = date("Y");
+		$birdstar_copyright_year = date("Y");
 
-		$birdsnap_first_year = $birdsnap_copyright_year;
+		$birdstar_first_year = $birdstar_copyright_year;
 		$args = array(
 			'numberposts' => 1,
 			'orderby'     => 'post_date',
@@ -230,14 +230,14 @@ class BirdSNAPFunctions {
 		$posts = get_posts( $args );
 
 		foreach ( $posts as $post ) {
-			$birdsnap_first_year = mysql2date( 'Y', $post->post_date, true );
+			$birdstar_first_year = mysql2date( 'Y', $post->post_date, true );
 		}
 
-		if( $birdsnap_copyright_year <> $birdsnap_first_year ){
-			$birdsnap_copyright_year = $birdsnap_first_year .' - ' .$birdsnap_copyright_year;
+		if( $birdstar_copyright_year <> $birdstar_first_year ){
+			$birdstar_copyright_year = $birdstar_first_year .' - ' .$birdstar_copyright_year;
 		}
 
-		return $birdsnap_copyright_year;
+		return $birdstar_copyright_year;
 	}
 
 	//////////////////////////////////////////////////////
@@ -245,11 +245,11 @@ class BirdSNAPFunctions {
 	public function header_style() {
 
 		//Theme Option
-		$birdsnap_accent_color = get_theme_mod( 'accent_color', '#ff4a5d' );
-		$birdsnap_text_color = get_theme_mod( 'text_color', '#333' );
-		$birdsnap_link_color = get_theme_mod( 'link_color', '#1c4bbe' );
-		$birdsnap_widget_color = get_theme_mod( 'widget_color', '#E5E5E5' );
-		$birdsnap_header_color = get_header_textcolor();
+		$birdstar_accent_color = get_theme_mod( 'accent_color', '#ff4a5d' );
+		$birdstar_text_color = get_theme_mod( 'text_color', '#333' );
+		$birdstar_link_color = get_theme_mod( 'link_color', '#1c4bbe' );
+		$birdstar_widget_color = get_theme_mod( 'widget_color', '#E5E5E5' );
+		$birdstar_header_color = get_header_textcolor();
 
 	?>
 
@@ -264,7 +264,7 @@ class BirdSNAPFunctions {
 
 	//////////////////////////////////////////////////////
 	// Admin Header Style
-	public function birdsnap_admin_header_style() {
+	public function birdstar_admin_header_style() {
 	?>
 
 	<style type="text/css">
@@ -277,7 +277,7 @@ class BirdSNAPFunctions {
 
 	//////////////////////////////////////////////////////
 	// Admin Header Image
-	public function birdsnap_admin_header_image() {
+	public function birdstar_admin_header_image() {
 
 		$style = '';
 		if ( 'blank' == get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) || '' == get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ) ){
@@ -291,7 +291,7 @@ class BirdSNAPFunctions {
 			</div>
 		<?php endif; ?>
 
-		<div id="birdsnap_header">
+		<div id="birdstar_header">
 			<div id="site-title"><a <?php echo $style; ?> onclick="return false;" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></div>
 			<div id="site-description" <?php echo $style; ?>><?php bloginfo( 'description' ); ?></div>
 		</div>
@@ -311,7 +311,7 @@ class BirdSNAPFunctions {
 			$title .= " | $site_description";
 
 		if ( $paged >= 2 || $page >= 2 )
-			$title .= ' | ' . sprintf( __( 'Page %s', 'birdsnap' ), max( $paged, $page ) );
+			$title .= ' | ' . sprintf( __( 'Page %s', 'birdstar' ), max( $paged, $page ) );
 
 		return $title;
 	}
@@ -325,16 +325,16 @@ class BirdSNAPFunctions {
 		}
 
 		wp_enqueue_script( 'jquery-masonry' );
-		wp_enqueue_script( 'birdsnap', get_template_directory_uri() .'/js/birdsnap.js', 'jquery', '1.00' );
-		wp_enqueue_style( 'birdsnap', get_stylesheet_uri() );
+		wp_enqueue_script( 'birdstar', get_template_directory_uri() .'/js/birdstar.js', 'jquery', '1.00' );
+		wp_enqueue_style( 'birdstar', get_stylesheet_uri() );
 	}
 
 	//////////////////////////////////////////////////////
 	// Theme Customizer
 	public function customize($wp_customize) {
 	 
-		$wp_customize->add_section( 'birdsnap_customize', array(
-			'title'=> __( 'BirdSNAP Options', 'birdsnap' ),
+		$wp_customize->add_section( 'birdstar_customize', array(
+			'title'=> __( 'Birdstar Options', 'birdstar' ),
 			'priority'	=> 999,
 		) );
 
@@ -344,8 +344,8 @@ class BirdSNAPFunctions {
 		) );
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color', array(
-			'label' => __( 'Accent Color', 'birdsnap' ),
-			'section'=> 'birdsnap_customize',
+			'label' => __( 'Accent Color', 'birdstar' ),
+			'section'=> 'birdstar_customize',
 			'settings' => 'accent_color',
 		) ) );
 
@@ -355,8 +355,8 @@ class BirdSNAPFunctions {
 		) );
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'text_color', array(
-			'label' => __( 'Text Color', 'birdsnap' ),
-			'section'=> 'birdsnap_customize',
+			'label' => __( 'Text Color', 'birdstar' ),
+			'section'=> 'birdstar_customize',
 			'settings' => 'text_color',
 		) ) );
 
@@ -366,8 +366,8 @@ class BirdSNAPFunctions {
 		) );
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
-			'label' => __( 'Link Color', 'birdsnap' ),
-			'section'=> 'birdsnap_customize',
+			'label' => __( 'Link Color', 'birdstar' ),
+			'section'=> 'birdstar_customize',
 			'settings' => 'link_color',
 		) ) );
 
@@ -377,8 +377,8 @@ class BirdSNAPFunctions {
 		) );
 
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'widget_color', array(
-			'label' => __( 'Widget BackgroundColor', 'birdsnap' ),
-			'section'=> 'birdsnap_customize',
+			'label' => __( 'Widget BackgroundColor', 'birdstar' ),
+			'section'=> 'birdstar_customize',
 			'settings' => 'widget_color',
 		) ) );
 
@@ -389,8 +389,8 @@ class BirdSNAPFunctions {
 		) );
 
 		$wp_customize->add_control( 'copyright', array(
-			'label'		=> __( 'Display Copyright', 'birdsnap' ),
-			'section'  => 'birdsnap_customize',
+			'label'		=> __( 'Display Copyright', 'birdstar' ),
+			'section'  => 'birdstar_customize',
 			'type'     => 'checkbox',
 			'settings' => 'copyright',
 		) );
@@ -402,8 +402,8 @@ class BirdSNAPFunctions {
 		) );
 
 		$wp_customize->add_control( 'credit', array(
-			'label'		=> __( 'Display Credit', 'birdsnap' ),
-			'section'  => 'birdsnap_customize',
+			'label'		=> __( 'Display Credit', 'birdstar' ),
+			'section'  => 'birdstar_customize',
 			'type'     => 'checkbox',
 			'settings' => 'credit',
 		) );
@@ -412,7 +412,7 @@ class BirdSNAPFunctions {
 	//////////////////////////////////////////////////////
 	// Excerpt More
 	public function excerpt_more( $more ) { 
-		return '... <a href="'. esc_url( get_permalink() ) . '" class="more-link">' .__( 'Continue reading', 'birdsnap' ) . '</a>';
+		return '... <a href="'. esc_url( get_permalink() ) . '" class="more-link">' .__( 'Continue reading', 'birdstar' ) . '</a>';
 	}
 
 	//////////////////////////////////////////////////////
