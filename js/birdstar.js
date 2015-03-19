@@ -8,10 +8,21 @@ jQuery(function() {
 		});
 	});
 
+	// Navigation dropdown menu for mobile
+	jQuery( '#menu-primary-items .menu-item-has-children' ).each(function(){
+		jQuery( this ).append( '<span></span>' );
+	});
+
+	jQuery( '#menu-primary-items .menu-item-has-children span' ).click( function(){
+		jQuery( this ).parent().toggleClass( 'open' );
+		if( !jQuery( this ).parent().hasClass( 'open') ){
+			jQuery( this ).parent().find( '.menu-item-has-children' ).removeClass('open' );
+		}
+	});
+
 	// Navigation for mobile
 	jQuery( "#small-menu" ).click( function(){
 		jQuery( "#menu-primary-items" ).slideToggle();
-		jQuery( this ).toggleClass( "current" );
 	});
 
 	// back to pagetop

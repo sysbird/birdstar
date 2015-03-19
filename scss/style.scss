@@ -106,6 +106,7 @@ body {
 	font-family: Verdana,Arial, Meiryo , "Hiragino Kaku Gothic Pro" ,sans-serif;
 	background: #FFF;
 	color: $text-color;
+	font-size: 1.1rem;
 	overflow: hidden;
 
 	* {
@@ -122,13 +123,14 @@ body {
 #header {
 	position: relative;
 	color: $accent-color;
+	border-bottom: solid 1px $border-color;
 
 	a {
 		color: $accent-color;
 	}
 
 	#branding {
-		padding: 1.6em 0 0.8em;
+		padding: 3.8em 0 0.8em;
 
 		#site-title {
 			margin: 0;
@@ -143,6 +145,10 @@ body {
 				&:hover {
 					text-decoration: none;
 				}
+			}
+
+			img {
+				width: 100%;
 			}
 		}
 
@@ -168,56 +174,98 @@ body {
 /* Menu
 -------------------------------------------------------------- */
 #menu-wrapper {
-	padding: 0.8em 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 1em;
 
 	.menu {
 		#small-menu {
 			cursor: pointer;
 			display: block;
-			padding: 5px;
+			padding: 0.4em;
 		    font-size: 1rem;
 		    background: $accent-color;
 		    color: #FFF;
-		    border-radius: 4px;
    		    font-size: 1.4rem;
+   		    text-align: right;
 
-			&:before {
+			&:after {
 			    @include font-awesome("\f0c9");
-			    padding: 0 0.5em 0 0;
+			    padding: 0 0 0 0.4em;
 			}
 		}
 
 		ul#menu-primary-items {
 			margin: 0;
 			padding: 0;
+			background-color: $accent-color;
 			display: none; /* visibility will be toggled with jquery */
 
 			li {
 				list-style: none;
 
 				a {
-					padding: 0.4em 0.8em 0.4em 0;
+					padding: 0.4em 0.8em;
 					display: block;
-					color: $text-color;
+					color: #FFF;
 					text-decoration: none;
 					line-height: 1.2;
-					border-bottom: dotted 1px $border-color;
+					border-top: dotted 1px $border-color;
 					*white-space: nowrap; /* IE7 and below */
 
 					&:hover {
-						color: $accent-color;
+						color: #DDD;
+					}
+				}
+
+				&.menu-item-has-children {
+					position: relative;
+
+					> a {
+						padding-right: 2.2em;
+					}
+
+					span {
+			    		width: 2em;
+			    		height: 2em;
+			    		position: absolute;
+			    		top: 0;
+			    		right: 0;
+			    		color: #FFF;
+						cursor: pointer;
+
+						&:before {
+							@include font-awesome("\f067");
+				    		padding: 0.5em 0 0 0.4em;
+						}
+					}
+
+					ul {
+						display: none;
+					}
+
+					&.open {
+						> span:before {
+							@include font-awesome("\f068");
+						}
+
+						> ul {
+							display: block;
+						}
 					}
 				}
 
 				ul {
-					padding-left: 0.8em;
+					padding-left: 1.6em;
 				}
 			}
 
 			.current-menu-item > a,
 			.current-menu-ancestor > a,
 			.current-menu-parent > a {
-				color: $accent-color;
+				color: #DDD;
 			}
 		}
 	}
@@ -1289,14 +1337,28 @@ video {
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
 
+	.wrapper {
+		font-size: 1rem;
+	}
+
 	#header {
+		border-bottom: none;
+
 		#branding {
 			padding-top: 3.2em;
+
+			#site-title {
+				max-width: 50%
+			}
 		}
 	}
 
 	#menu-wrapper {
-		padding-bottom: 0;
+		width: 96%;
+		height: auto;
+		margin: 0 auto;
+		padding: 0;
+		position: relative;
 
 		*zoom: 1;
 		&:after {
@@ -1315,6 +1377,7 @@ video {
 				border-top: solid 1px $border-color;
 				border-bottom: solid 2px $border-color;
 				padding: 0.8em 0;
+				background-color: #FFF;
 
 				> li {
 					display: inline-block;
@@ -1338,18 +1401,33 @@ video {
 					position: relative;
 					text-align: left;
 
-					a {
-						border: none;
-					}
-
-					&:hover > ul {
-						display: block;
-					}
-
 					&.menu-item-has-children {
+						span {
+							display: none;
+						}
+
+						&.open {
+							> ul {
+								display: none;
+							}
+						}
+
 						>a:after {
 						   @include font-awesome("\f0d7");
 						   padding-left: 5px;
+						}
+					}
+
+					&:hover > ul {
+						display: block !important;
+					}
+
+					a {
+						border: none;
+						color: $text-color;
+
+						&:hover {
+							color: $accent-color;
 						}
 					}
 
@@ -1378,7 +1456,6 @@ video {
 
 							a {
 								background-color: #FFF;
-								color: $text-color;
 								border-top: solid 1px $border-color;
 								border-bottom: none;
 								height: auto;
@@ -1396,6 +1473,12 @@ video {
 							}
 						}
 					}
+				}
+
+				.current-menu-item > a,
+				.current-menu-ancestor > a,
+				.current-menu-parent > a {
+					color: $accent-color;
 				}
 			}
 		}
@@ -1451,7 +1534,8 @@ video {
 /* --- PCs --- */
 @media screen and (min-width: 930px) {
 
-	.container {
+	.container,
+	#menu-wrapper {
 		width: 930px;
 	}
 

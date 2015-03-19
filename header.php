@@ -35,9 +35,9 @@ The Header for our theme.
 				</<?php echo $heading_tag; ?>>
 				<p id="site-description"><?php bloginfo( 'description' ); ?></p>
 			</div>
-
-			<nav id="menu-wrapper">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu', 'menu_class' => '', 'menu_id' => 'menu-primary-items', 'items_wrap' => '<div id="small-menu">' .__( 'Menu', 'BirdSTAR' ) .'</div><ul id="%1$s" class="%2$s">%3$s</ul>', 'fallback_cb' => '' ) ); ?>
-			</nav>
 		</div>
+
+		<nav id="menu-wrapper">
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu', 'menu_class' => '', 'menu_id' => 'menu-primary-items', 'items_wrap' => '<div id="small-menu">' .__( 'Menu', 'BirdSTAR' ) .'</div><ul id="%1$s" class="%2$s">%3$s</ul>', 'fallback_cb' => '' ) ); ?>
+		</nav>
 	</header>
