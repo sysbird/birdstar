@@ -124,13 +124,14 @@ body {
 	position: relative;
 	color: $accent-color;
 	border-bottom: solid 1px $border-color;
+	padding-top: 1.8em;
 
 	a {
 		color: $accent-color;
 	}
 
 	#branding {
-		padding: 3.8em 0 0.8em;
+		padding-bottom: 0.8em;
 
 		#site-title {
 			margin: 0;
@@ -1342,10 +1343,10 @@ video {
 	}
 
 	#header {
-		border-bottom: none;
+		padding-top: 0;
+		border-bottom: 0;
 
 		#branding {
-			padding-top: 3.2em;
 
 			#site-title {
 				max-width: 50%

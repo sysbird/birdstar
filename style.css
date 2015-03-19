@@ -134,11 +134,12 @@ body {
 #header {
   position: relative;
   color: black;
-  border-bottom: solid 1px #dddddd; }
+  border-bottom: solid 1px #dddddd;
+  padding-top: 1.8em; }
   #header a {
     color: black; }
   #header #branding {
-    padding: 3.8em 0 0.8em; }
+    padding-bottom: 0.8em; }
     #header #branding #site-title {
       margin: 0;
       padding: 0;
@@ -1142,11 +1143,10 @@ video {
     font-size: 1rem; }
 
   #header {
-    border-bottom: none; }
-    #header #branding {
-      padding-top: 3.2em; }
-      #header #branding #site-title {
-        max-width: 50%; }
+    padding-top: 0;
+    border-bottom: 0; }
+    #header #branding #site-title {
+      max-width: 50%; }
 
   #menu-wrapper {
     width: 96%;

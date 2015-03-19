@@ -18,15 +18,16 @@ The Header for our theme.
 </head>
 <body <?php body_class(); ?>>
 
-<?php $birdstar_header_image = get_header_image(); ?>
-<?php if( ! empty( $birdstar_header_image ) ): ?>
-	<div id="headerimage">
-		<img src="<?php header_image(); ?>" alt="<?php bloginfo( 'name' ); ?>">
-	</div>
-<?php endif; ?>
-
 <div <?php BirdSTAR::wrapper_class('wrapper'); ?>>
 	<header id="header">
+
+		<?php $birdstar_header_image = get_header_image(); ?>
+		<?php if( ! empty( $birdstar_header_image ) ): ?>
+			<div id="headerimage">
+				<img src="<?php header_image(); ?>" alt="<?php bloginfo( 'name' ); ?>">
+			</div>
+		<?php endif; ?>
+
 		<div class="container">
 			<div id="branding">
 				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
