@@ -91,15 +91,6 @@ body {
 	margin: 0 auto;
 }
 
-/* Header Image
--------------------------------------------------------------- */
-#headerimage {
-	img {
-		width: 100%;
-		vertical-align:bottom;
-	}
-}
-
 /* Wrapper
 -------------------------------------------------------------- */
 .wrapper {
@@ -124,15 +115,24 @@ body {
 	position: relative;
 	color: $accent-color;
 	border-bottom: solid 1px $border-color;
-	padding-top: 1.8em;
+	padding-top: 2.3em;
 
 	a {
 		color: $accent-color;
 	}
 
-	#branding {
-		padding-bottom: 0.8em;
+	#headerimage {
+		position: absolute;
+		left: -23%;
+		top: 2.3em;
 
+		img {
+			width: 123%;
+			vertical-align:bottom;
+		}
+	}
+
+	#branding {
 		#site-title {
 			margin: 0;
 			padding: 0;
@@ -150,6 +150,7 @@ body {
 
 			img {
 				width: 100%;
+				vertical-align:bottom;
 			}
 		}
 
@@ -1346,7 +1347,19 @@ video {
 		padding-top: 0;
 		border-bottom: 0;
 
+		#headerimage {
+			position: relative;
+			left: 0;
+			top: 0;
+
+			img {
+				width: 100%;
+				vertical-align:bottom;
+			}
+		}
+
 		#branding {
+			margin-top: -11.39%;
 
 			#site-title {
 				max-width: 50%

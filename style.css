@@ -108,12 +108,6 @@ body {
   width: 100%;
   margin: 0 auto; }
 
-/* Header Image
--------------------------------------------------------------- */
-#headerimage img {
-  width: 100%;
-  vertical-align: bottom; }
-
 /* Wrapper
 -------------------------------------------------------------- */
 .wrapper {
@@ -135,27 +129,33 @@ body {
   position: relative;
   color: black;
   border-bottom: solid 1px #dddddd;
-  padding-top: 1.8em; }
+  padding-top: 2.3em; }
   #header a {
     color: black; }
-  #header #branding {
-    padding-bottom: 0.8em; }
-    #header #branding #site-title {
-      margin: 0;
-      padding: 0;
-      font-size: 2.8rem;
-      font-weight: normal;
-      line-height: 1; }
-      #header #branding #site-title a {
-        display: block; }
-        #header #branding #site-title a:hover {
-          text-decoration: none; }
-      #header #branding #site-title img {
-        width: 100%; }
-    #header #branding #site-description {
-      display: none;
-      margin: 0;
-      padding: 0.8em 0 0 0; }
+  #header #headerimage {
+    position: absolute;
+    left: -23%;
+    top: 2.3em; }
+    #header #headerimage img {
+      width: 123%;
+      vertical-align: bottom; }
+  #header #branding #site-title {
+    margin: 0;
+    padding: 0;
+    font-size: 2.8rem;
+    font-weight: normal;
+    line-height: 1; }
+    #header #branding #site-title a {
+      display: block; }
+      #header #branding #site-title a:hover {
+        text-decoration: none; }
+    #header #branding #site-title img {
+      width: 100%;
+      vertical-align: bottom; }
+  #header #branding #site-description {
+    display: none;
+    margin: 0;
+    padding: 0.8em 0 0 0; }
 
 .no-title #header #branding {
   padding-top: 0; }
@@ -1145,8 +1145,17 @@ video {
   #header {
     padding-top: 0;
     border-bottom: 0; }
-    #header #branding #site-title {
-      max-width: 50%; }
+    #header #headerimage {
+      position: relative;
+      left: 0;
+      top: 0; }
+      #header #headerimage img {
+        width: 100%;
+        vertical-align: bottom; }
+    #header #branding {
+      margin-top: -11.39%; }
+      #header #branding #site-title {
+        max-width: 50%; }
 
   #menu-wrapper {
     width: 96%;
