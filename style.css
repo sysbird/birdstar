@@ -73,7 +73,7 @@ Font Awesome
 /* Link
 --------------------------------------------- */
 a {
-  color: #00acf0;
+  color: #3399cc;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
@@ -114,7 +114,6 @@ body {
   font-family: Verdana,Arial, Meiryo , "Hiragino Kaku Gothic Pro" ,sans-serif;
   background: #FFF;
   color: #555555;
-  font-size: 1.1rem;
   overflow: hidden; }
   .wrapper * {
     -webkit-box-sizing: border-box;
@@ -132,30 +131,29 @@ body {
   padding-top: 2.3em; }
   #header a {
     color: black; }
-  #header #headerimage {
-    position: absolute;
-    left: -23%;
-    top: 2.3em; }
-    #header #headerimage img {
-      width: 123%;
-      vertical-align: bottom; }
-  #header #branding #site-title {
-    margin: 0;
-    padding: 0;
-    font-size: 2.8rem;
-    font-weight: normal;
-    line-height: 1; }
-    #header #branding #site-title a {
-      display: block; }
-      #header #branding #site-title a:hover {
-        text-decoration: none; }
-    #header #branding #site-title img {
-      width: 100%;
-      vertical-align: bottom; }
-  #header #branding #site-description {
-    display: none;
-    margin: 0;
-    padding: 0.8em 0 0 0; }
+  #header #headerimage img {
+    width: 150%;
+    margin-left: -25%;
+    vertical-align: bottom; }
+  #header #branding {
+    padding: 1em 0; }
+    #header #branding #site-title {
+      margin: 0;
+      padding: 0;
+      font-size: 2.8rem;
+      font-weight: normal;
+      line-height: 1; }
+      #header #branding #site-title a {
+        display: block; }
+        #header #branding #site-title a:hover {
+          text-decoration: none; }
+      #header #branding #site-title img {
+        width: 100%;
+        vertical-align: bottom; }
+    #header #branding #site-description {
+      display: none;
+      margin: 0;
+      padding: 0.8em 0 0 0; }
 
 .no-title #header #branding {
   padding-top: 0; }
@@ -260,6 +258,7 @@ body {
 /* Posts
 --------------------------------------------- */
 #content {
+  font-size: 1.1rem;
   padding-bottom: 1.6em; }
   #content .content-header {
     margin: 0;
@@ -292,7 +291,7 @@ body {
         display: block; }
     #content .hentry .entry-header .entry-title {
       color: #555555;
-      font-size: 2.4rem;
+      font-size: 2rem;
       font-weight: normal;
       margin: 0;
       padding: 0;
@@ -369,7 +368,7 @@ body {
       margin: 1.6em 0;
       color: #555555; }
       #content .hentry .page-links span {
-        color: #00acf0;
+        color: #3399cc;
         padding: 0.4em 0.8em;
         margin-bottom: 5px;
         text-decoration: none;
@@ -377,22 +376,22 @@ body {
         text-align: center;
         display: inline-block;
         line-height: 1;
-        border-bottom: solid 2px #00acf0; }
+        border-bottom: solid 2px #3399cc; }
       #content .hentry .page-links a span {
         color: #555555;
         border-color: #dddddd; }
         #content .hentry .page-links a span:hover {
-          border-color: #00acf0; }
+          border-color: #3399cc; }
     #content .hentry a.more-link {
       display: block;
       font-size: 0.9em;
-      color: #00acf0;
+      color: #3399cc;
       padding: 0.4em 0.8em;
-      border: solid 1px #00acf0;
+      border: solid 1px #3399cc;
       text-align: center; }
       #content .hentry a.more-link:hover {
         text-decoration: none;
-        background: #00acf0;
+        background: #3399cc;
         color: #FFF; }
       #content .hentry a.more-link:after {
         content: "\f061";
@@ -807,10 +806,8 @@ video {
 
 /* Sidebar
 --------------------------------------------- */
-#sidebar {
-  padding: 1.6em 0.8em 0; }
-  #sidebar .widget {
-    margin: 0 0 1.6em 0; }
+#sidebar .widget {
+  margin: 0 0 1.6em 0; }
 
 /* Footer
 --------------------------------------------- */
@@ -945,10 +942,10 @@ video {
         display: block;
         padding: 0.2em 0.4em;
         margin: 0 auto;
-        border: solid 1px #00acf0; }
+        border: solid 1px #3399cc; }
         .widget #wp-calendar tbody th a:hover,
         .widget #wp-calendar tbody td a:hover {
-          background: #00acf0;
+          background: #3399cc;
           color: #dddddd;
           text-decoration: none; }
     .widget #wp-calendar thead th {
@@ -1031,9 +1028,9 @@ video {
         text-decoration: none; }
     .archive #content ul.article li.hentry .entry-title,
     .search #content ul.article li.hentry .entry-title {
-      color: #00acf0;
+      color: #3399cc;
       border: none;
-      font-size: 1rem;
+      font-size: 1em;
       margin: 0;
       padding: 0; }
     .archive #content ul.article li.hentry .postdate,
@@ -1100,8 +1097,8 @@ video {
 .tablenav {
   clear: both;
   color: #555555;
-  margin: 1.6em 0;
-  padding: 0 10px;
+  margin: 0.8em 0;
+  padding: 0;
   text-align: center;
   overflow: hidden;
   *zoom: 1; }
@@ -1126,36 +1123,27 @@ video {
       border: none;
       padding: 0.4em; }
   .tablenav a.page-numbers:hover {
-    border-color: #00acf0; }
+    border-color: #3399cc; }
   .tablenav a.page-numbers.prev:hover,
   .tablenav a.page-numbers.next:hover {
     background: none;
-    color: #00acf0; }
+    color: #3399cc; }
   .tablenav .current {
-    color: #00acf0;
-    border-color: #00acf0; }
+    color: #3399cc;
+    border-color: #3399cc; }
 
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
-  .wrapper {
-    font-size: 1rem; }
-
   #header {
     padding-top: 0;
     border-bottom: 0; }
-    #header #headerimage {
-      position: relative;
-      left: 0;
-      top: 0; }
-      #header #headerimage img {
-        width: 100%;
-        vertical-align: bottom; }
-    #header #branding {
-      margin-top: -11.39%; }
-      #header #branding #site-title {
-        max-width: 50%; }
+    #header #headerimage img {
+      width: 100%;
+      margin-left: 0; }
+    #header #branding.logo #site-title {
+      max-width: 50%; }
 
   #menu-wrapper {
     width: 96%;
@@ -1193,6 +1181,8 @@ video {
           display: none; }
         #menu-wrapper .menu ul#menu-primary-items li.menu-item-has-children.open > ul {
           display: none; }
+        #menu-wrapper .menu ul#menu-primary-items li.menu-item-has-children > a {
+          padding-right: 0.8em; }
         #menu-wrapper .menu ul#menu-primary-items li.menu-item-has-children > a:after {
           content: "\f0d7";
           display: inline-block;
@@ -1259,10 +1249,14 @@ video {
     float: left;
     padding-right: 320px; }
 
-  #content .content-header {
-    padding: 1.6em 1.6em 0.8em; }
-  #content .hentry {
-    padding: 1.6em 0.8em 0 0; }
+  #content {
+    font-size: 1rem; }
+    #content .content-header .content-title {
+      font-size: 2.4rem; }
+    #content .hentry {
+      padding: 1.6em 0.8em 0 0; }
+      #content .hentry .entry-header .entry-title {
+        font-size: 2.4rem; }
 
   #sidebar {
     float: right;
@@ -1281,7 +1275,7 @@ video {
       float: right; }
 
   .tablenav {
-    padding: 0 1.6em; } }
+    margin: 1.6em 0; } }
 /* --- PCs --- */
 @media screen and (min-width: 930px) {
   .container,
@@ -1293,12 +1287,12 @@ video {
   #header #branding #site-description {
     display: block; }
 
-  #content ul.article .hentry .entry-eyecatch {
+  #content .hentry .entry-eyecatch {
     margin-left: 0.8em;
     float: right; }
-    #content ul.article .hentry .entry-eyecatch img {
+    #content .hentry .entry-eyecatch img {
       max-width: 300px; }
-  #content ul.article .hentry a.more-link {
+  #content .hentry a.more-link {
     display: inline; }
 
   #widget-area .widget {

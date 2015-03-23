@@ -20,6 +20,7 @@ This theme, like WordPress, is licensed under the GPL.
 // variable
 $text-color: #555;
 $link-color: #00acf0;
+$link-color: #39c;
 $accent-color: #000;
 $border-color: #DDD;
 $meta-color: #999;
@@ -97,7 +98,6 @@ body {
 	font-family: Verdana,Arial, Meiryo , "Hiragino Kaku Gothic Pro" ,sans-serif;
 	background: #FFF;
 	color: $text-color;
-	font-size: 1.1rem;
 	overflow: hidden;
 
 	* {
@@ -122,17 +122,16 @@ body {
 	}
 
 	#headerimage {
-		position: absolute;
-		left: -23%;
-		top: 2.3em;
-
 		img {
-			width: 123%;
+			width: 150%;
+			margin-left: -25%;
 			vertical-align:bottom;
 		}
 	}
 
 	#branding {
+		padding: 1em 0;
+
 		#site-title {
 			margin: 0;
 			padding: 0;
@@ -276,6 +275,7 @@ body {
 /* Posts
 --------------------------------------------- */
 #content {
+	font-size: 1.1rem;
 	padding-bottom: 1.6em;
 
 	.content-header {
@@ -325,7 +325,7 @@ body {
 
 			.entry-title {
 				color: $text-color;
-				font-size: 2.4rem;
+				font-size: 2rem;
 				font-weight: normal;
 				margin: 0;
 				padding: 0;
@@ -942,8 +942,6 @@ video {
 /* Sidebar
 --------------------------------------------- */
 #sidebar {
-	padding: 1.6em 0.8em 0;
-
 	.widget {
 		margin: 0 0 1.6em 0;
 	}
@@ -1215,7 +1213,7 @@ video {
 			.entry-title {
 				color: $link-color;
 				border: none;
-				font-size: 1rem;
+				font-size: 1em;
 				margin: 0;
 				padding: 0;
 			}
@@ -1289,8 +1287,8 @@ video {
 .tablenav {
 	clear: both;	
 	color: $text-color;
-	margin: 1.6em 0;
-	padding: 0 10px;
+	margin: 0.8em 0;
+	padding: 0;
 	text-align: center;
 	@include clearfix;
 
@@ -1339,30 +1337,22 @@ video {
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
 
-	.wrapper {
-		font-size: 1rem;
-	}
-
 	#header {
 		padding-top: 0;
 		border-bottom: 0;
 
 		#headerimage {
-			position: relative;
-			left: 0;
-			top: 0;
-
 			img {
 				width: 100%;
-				vertical-align:bottom;
+				margin-left: 0;
 			}
 		}
 
 		#branding {
-			margin-top: -11.39%;
-
-			#site-title {
-				max-width: 50%
+			&.logo {
+				#site-title {
+					max-width: 50%
+				}
 			}
 		}
 	}
@@ -1424,6 +1414,10 @@ video {
 							> ul {
 								display: none;
 							}
+						}
+
+						> a {
+							padding-right: 0.8em;
 						}
 
 						>a:after {
@@ -1505,12 +1499,22 @@ video {
 	}
 
 	#content {
+		font-size: 1rem;
+
 		.content-header {
-			padding: 1.6em 1.6em 0.8em;
+			.content-title {
+				font-size: 2.4rem;
+			}
 		}
 
 		.hentry {
 			padding: 1.6em 0.8em 0 0;
+
+			.entry-header {
+				.entry-title {
+					font-size: 2.4rem;
+				}
+			}
 		}
 	}
 
@@ -1541,7 +1545,7 @@ video {
 	}
 
 	.tablenav {
-		padding: 0 1.6em;
+		margin: 1.6em 0;
 	}
 }
 
@@ -1569,20 +1573,18 @@ video {
 
 	#content {
 
-		ul.article {
-			.hentry {
-				.entry-eyecatch {
-					margin-left: 0.8em;
-					float: right;
+		.hentry {
+			.entry-eyecatch {
+				margin-left: 0.8em;
+				float: right;
 
-					img {
-						max-width: 300px;
-					}
+				img {
+					max-width: 300px;
 				}
+			}
 
-				a.more-link {
-					display: inline;
-				}
+			a.more-link {
+				display: inline;
 			}
 		}
 	}
@@ -1601,7 +1603,6 @@ video {
 			padding: 0 1.6em 1.6em;
 
 			li.hentry {
-
 				.entry-title {
 					float: left;
 					max-width: 70%;
