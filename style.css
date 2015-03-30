@@ -268,10 +268,9 @@ body {
   #content ul.article {
     list-style: none;
     margin: 0;
-    padding: 0;
-    overflow: hidden; }
+    padding: 0; }
     #content ul.article .hentry {
-      border-top: dashed 1px #FFF;
+      border-top: dashed 1px #dddddd;
       margin-top: -1px; }
   #content .hentry {
     width: 100%;
@@ -281,12 +280,61 @@ body {
     *zoom: 1; }
     #content .hentry .entry-eyecatch {
       margin-bottom: 0.8em;
-      text-align: center; }
+      text-align: center;
+      padding: 0.8em;
+      background-color: #FFF;
+      position: relative;
+      border: 1px solid #dddddd;
+      border-radius: 5px; }
+      #content .hentry .entry-eyecatch:after {
+        content: '';
+        position: absolute;
+        border-top: 12px solid #FFF;
+        border-right: 7px solid transparent;
+        border-left: 7px solid transparent;
+        bottom: -11px;
+        left: 45%; }
+      #content .hentry .entry-eyecatch:before {
+        content: '';
+        position: absolute;
+        border-top: 12px solid #dddddd;
+        border-right: 7px solid transparent;
+        border-left: 7px solid transparent;
+        bottom: -13px;
+        left: 45%; }
+      #content .hentry .entry-eyecatch .category-type {
+        position: absolute;
+        top: -30px;
+        right: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px 50px;
+        color: #FFF;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 12px; }
+        #content .hentry .entry-eyecatch .category-type a {
+          display: block;
+          color: #FFF;
+          text-align: center;
+          vertical-align: middle;
+          margin: 0 auto;
+          width: 50px;
+          height: 50px;
+          line-height: 50px; }
+          #content .hentry .entry-eyecatch .category-type a:hover {
+            text-decoration: none; }
       #content .hentry .entry-eyecatch img {
         max-width: 100%;
         vertical-align: text-bottom; }
       #content .hentry .entry-eyecatch a {
-        display: block; }
+        display: block;
+        color: #999999;
+        font-size: 0.9em; }
+      #content .hentry .entry-eyecatch em {
+        display: block;
+        margin-top: 0.4em; }
     #content .hentry .entry-header .entry-title {
       color: #555555;
       font-size: 2rem;
@@ -581,6 +629,26 @@ body {
     background: #ffc;
     color: #555555;
     text-decoration: none; }
+
+/* Category Type for OKC
+-------------------------------------------------------------- */
+.category-type {
+  background-color: #999999; }
+
+.snack .entry-eyecatch .category-type {
+  background-color: #ea8556; }
+
+.chocolate .entry-eyecatch .category-type {
+  background-color: #c45252; }
+
+.cookie .entry-eyecatch .category-type {
+  background-color: #e874a4; }
+
+.candy .entry-eyecatch .category-type {
+  background-color: #60b2d6; }
+
+.senbei .entry-eyecatch .category-type {
+  background-color: #59bf71; }
 
 /* Images
 -------------------------------------------------------------- */
@@ -1012,7 +1080,7 @@ video {
   .search #content ul.article li.hentry {
     padding: 0;
     margin: 0;
-    border-bottom: solid 1px #dddddd;
+    border-top: solid 1px #dddddd;
     overflow: hidden;
     *zoom: 1; }
     .archive #content ul.article li.hentry a,
@@ -1294,10 +1362,23 @@ video {
     display: block; }
 
   #content .hentry .entry-eyecatch {
+    float: right;
     margin-left: 0.8em;
-    float: right; }
-    #content .hentry .entry-eyecatch img {
-      max-width: 300px; }
+    max-width: 300px; }
+    #content .hentry .entry-eyecatch:after {
+      border-right: 12px solid #FFF;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: none;
+      left: -11px;
+      bottom: 20px; }
+    #content .hentry .entry-eyecatch:before {
+      border-right: 12px solid #dddddd;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: none;
+      left: -13px;
+      bottom: 20px; }
   #content .hentry a.more-link {
     display: inline; }
 

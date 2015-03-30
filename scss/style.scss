@@ -19,11 +19,15 @@ This theme, like WordPress, is licensed under the GPL.
 
 // variable
 $text-color: #555;
-$link-color: #00acf0;
 $link-color: #39c;
 $accent-color: #000;
 $border-color: #DDD;
 $meta-color: #999;
+$category-color-snack: #ea8556;
+$category-color-chocolate: #c45252;
+$category-color-cookie: #e874a4;
+$category-color-candy: #60b2d6;
+$category-color-senbei: #59bf71;
 
 /*------------------------------
 Font Awesome
@@ -289,10 +293,9 @@ body {
 		list-style: none;
 		margin: 0;
 		padding: 0;
-		overflow: hidden;
 
 		.hentry {
-			border-top: dashed 1px #FFF;
+			border-top: dashed 1px $border-color;
 			margin-top: -1px;
 		}
 	}
@@ -306,6 +309,60 @@ body {
 		.entry-eyecatch {
 			margin-bottom: 0.8em;
 			text-align: center;
+			padding: 0.8em;
+			background-color: #FFF;
+			position: relative;
+			border: 1px solid $border-color;
+			border-radius: 5px;
+
+           &:after {
+                content: '';
+                position: absolute;
+                border-top: 12px solid #FFF;
+                border-right: 7px solid transparent;
+                border-left: 7px solid transparent;
+                bottom: -11px;
+                left: 45%;
+            }
+ 
+            &:before {
+                content: '';
+                position: absolute;
+                border-top: 12px solid $border-color;
+                border-right: 7px solid transparent;
+                border-left: 7px solid transparent;
+                bottom: -13px;
+                left: 45%;
+            }
+
+			.category-type {
+				position: absolute;
+				top: -30px;
+				right: 5px;
+				width: 50px;
+				height: 50px;
+				border-radius: 50px 50px;
+				color: #FFF;
+			 	display: table-cell;
+			    text-align: center;
+			    vertical-align: middle;
+				font-size: 12px;
+
+			    a {
+					display: block;
+				    color: #FFF;
+				    text-align: center;
+				    vertical-align: middle;
+				    margin: 0 auto;
+				    width: 50px;
+				    height: 50px;
+				    line-height: 50px;
+
+				    &:hover {
+				    	text-decoration: none;
+				    }
+			    }
+			 }
 
 			img {
 				max-width: 100%;
@@ -314,6 +371,13 @@ body {
 
 			a {
 				display: block;
+				color: $meta-color;
+				font-size: 0.9em;
+			}
+
+			em {
+				display: block;
+				margin-top: 0.4em;
 			}
 		}
 
@@ -628,6 +692,52 @@ body {
 			background: #ffc;
 			color: $text-color;
 			text-decoration: none;
+		}
+	}
+}
+
+/* Category Type for OKC
+-------------------------------------------------------------- */
+.category-type {
+	background-color: $meta-color;
+}
+
+.snack {
+	.entry-eyecatch {
+		.category-type {
+			background-color: $category-color-snack;
+		}
+	}
+}
+
+.chocolate {
+	.entry-eyecatch {
+		.category-type {
+			background-color: $category-color-chocolate;
+		}
+	}
+}
+
+.cookie {
+	.entry-eyecatch {
+		.category-type {
+			background-color: $category-color-cookie;
+		}
+	}
+}
+
+.candy {
+	.entry-eyecatch {
+		.category-type {
+			background-color: $category-color-candy;
+		}
+	}
+}
+
+.senbei {
+	.entry-eyecatch {
+		.category-type {
+			background-color: $category-color-senbei;
 		}
 	}
 }
@@ -1193,7 +1303,7 @@ video {
 		li.hentry {
 			padding: 0;
 			margin: 0;
-			border-bottom: solid 1px $border-color;
+			border-top: solid 1px $border-color;
 			@include clearfix;
 
 			a {
@@ -1583,13 +1693,28 @@ video {
 
 		.hentry {
 			.entry-eyecatch {
-				margin-left: 0.8em;
 				float: right;
+				margin-left: 0.8em;
+				max-width: 300px;
 
-				img {
-					max-width: 300px;
-				}
-			}
+	           &:after {
+	                border-right: 12px solid #FFF;
+	                border-top: 7px solid transparent;
+	                border-bottom: 7px solid transparent;
+	                border-left: none;
+	                left: -11px;
+	                bottom: 20px;
+	            }
+
+	            &:before {
+	                border-right: 12px solid $border-color;
+	                border-top: 7px solid transparent;
+	                border-bottom: 7px solid transparent;
+	                border-left: none;
+	                left: -13px;
+	                bottom: 20px;
+	            }
+            }
 
 			a.more-link {
 				display: inline;
