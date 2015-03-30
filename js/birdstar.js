@@ -14,10 +14,9 @@ jQuery(function() {
 	});
 
 	jQuery( '#menu-primary-items .menu-item-has-children span' ).click( function(){
-		jQuery( this ).parent().toggleClass( 'open' );
-		if( !jQuery( this ).parent().hasClass( 'open') ){
-			jQuery( this ).parent().find( '.menu-item-has-children' ).removeClass('open' );
-		}
+		jQuery( this ).parent().children( 'ul' ).slideToggle( 'normal', function(){
+			jQuery( this ).parent().toggleClass( 'open' );
+		});
 	});
 
 	// Navigation for mobile

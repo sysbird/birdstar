@@ -251,10 +251,6 @@ body {
 						> span:before {
 							@include font-awesome("\f068");
 						}
-
-						> ul {
-							display: block;
-						}
 					}
 				}
 
@@ -1428,7 +1424,7 @@ video {
 
 					&:hover > ul {
 						display: block !important;
-					}
+  					}
 
 					a {
 						border: none;
@@ -1437,6 +1433,18 @@ video {
 						&:hover {
 							color: $accent-color;
 						}
+					}
+
+					&:hover > ul {
+						visibility: visible;
+						opacity: 1;
+					}
+
+					> ul {
+						display: block !important;
+						opacity: 0;
+						visibility: hidden;
+						transition: .5s;
 					}
 
 					ul {
@@ -1451,7 +1459,7 @@ video {
 						border-top: solid 2px $accent-color;
 						z-index: 9999;
 
-						li {
+    						li {
 							margin: 0;
 							padding: 0;
 

@@ -246,8 +246,6 @@ body {
           padding-right: 0.2em;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale; }
-        #menu-wrapper .menu ul#menu-primary-items li.menu-item-has-children.open > ul {
-          display: block; }
       #menu-wrapper .menu ul#menu-primary-items li ul {
         padding-left: 1.6em; }
     #menu-wrapper .menu ul#menu-primary-items .current-menu-item > a,
@@ -1201,6 +1199,14 @@ video {
           color: #555555; }
           #menu-wrapper .menu ul#menu-primary-items li a:hover {
             color: black; }
+        #menu-wrapper .menu ul#menu-primary-items li:hover > ul {
+          visibility: visible;
+          opacity: 1; }
+        #menu-wrapper .menu ul#menu-primary-items li > ul {
+          display: block !important;
+          opacity: 0;
+          visibility: hidden;
+          transition: .5s; }
         #menu-wrapper .menu ul#menu-primary-items li ul {
           margin: 0;
           padding: 0;
