@@ -1,6 +1,15 @@
 <?php
 /*
 The Header for our theme.
+
+			<div id="branding">
+				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
+				<<?php echo $heading_tag; ?> id="site-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</<?php echo $heading_tag; ?>>
+				<p id="site-description"><?php bloginfo( 'description' ); ?></p>
+			</div>
+
 */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -29,12 +38,11 @@ The Header for our theme.
 		<?php endif; ?>
 
 		<div class="container">
-			<div id="branding">
+			<div id="branding" class="logo">
 				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 				<<?php echo $heading_tag; ?> id="site-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo( 'name' ); ?>"></a>
 				</<?php echo $heading_tag; ?>>
-				<p id="site-description"><?php bloginfo( 'description' ); ?></p>
 			</div>
 		</div>
 
