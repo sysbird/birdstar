@@ -27,7 +27,7 @@ The template for displaying Comments.
 	<?php endif;  ?>
 
 		<ol class="commentlist">
-			<?php wp_list_comments( array( 'callback' => 'BirdSTAR::the_comments' ) ); ?>
+			<?php wp_list_comments( array( 'callback' => 'birdstar_the_comments' ) ); ?>
 		</ol>
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>

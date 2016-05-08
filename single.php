@@ -7,11 +7,13 @@ get_header(); ?>
 <div class="container">
 	<div id="main">
 		<div id="content">
+			<?php if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) { WP_SiteManager_bread_crumb::bread_crumb(); } ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php get_template_part( 'content', get_post_format() ); ?>
+		<div id="rakuten"></div>
 		<?php comments_template( '', true ); ?>
 	</article>
 

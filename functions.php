@@ -33,6 +33,9 @@ class BirdSTARFunctions {
 		add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) ); 
 		add_filter( 'shortcode_atts_gallery', array( $this, 'gallery_atts' ), 10, 3 );
 		add_filter( 'use_default_gallery_style', '__return_false' );
+		add_action( 'init', array( $this, 'my_custom_post_type' ), 0 );
+		add_action( 'pre_get_posts', array( $this, 'archive_query' ) );
+		add_shortcode( 'birdmagazine_yearly', array( $this, 'birdmagazine_yearly' ) );
 	}
 
 	//////////////////////////////////////////////////////
@@ -137,47 +140,6 @@ class BirdSTARFunctions {
 			) );
 	}
 
-	//////////////////////////////////////////
-	// SinglePage Comment callback
-	public function the_comments( $comment, $args, $depth ) {
-
-		$GLOBALS['comment'] = $comment;
-
-	?>
-		<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-
-		<?php if( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ):
-			$birstips_url    = get_comment_author_url();
-			$birstips_author = get_comment_author();
-		 ?> 
-
-			<div class="posted"><strong><?php _e( 'Pingback', 'birdstar' ); ?> : </strong><a href="<?php echo $birstips_url; ?>" target="_blank" class="web"><?php echo $birstips_author ?></a><?php edit_comment_link( __('(Edit)', 'birdstar'), ' ' ); ?></div>
-
-		<?php else: ?>
-
-			<div class="comment_meta">
-				<?php echo get_avatar( $comment, 40 ); ?>
-				<span class="author"><?php comment_author(); ?></span>
-				<span class="postdate"><?php echo get_comment_time(get_option('date_format') .' ' .get_option('time_format')); ?></span><?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div>
-			<?php if ( $comment->comment_approved == '0' ) : ?>
-				<em><?php _e( 'Your comment is awaiting moderation.', 'birdstar' ); ?></em>
-			<?php endif; ?>
-
-			<div class="comment_text">
-				<?php comment_text(); ?>
-
-				<?php $birdstar_web = get_comment_author_url(); ?>
-				<?php if(!empty($birdstar_web)): ?>
-					<p class="web"><a href="<?php echo $birdstar_web; ?>" target="_blank"><?php echo $birdstar_web; ?></a></p>
-				<?php endif; ?>
-			</div>
-
-		<?php endif; ?>
-	<?php
-		// no "</li>" conform WORDPRESS
-	}
-
 	//////////////////////////////////////////////////////
 	// Header markup
 	public function wrapper_class($birdstar_class) {
@@ -213,6 +175,20 @@ class BirdSTARFunctions {
 			'mid_size' => 3,
 			'current' => ( $paged ? $paged : 1 ),
 		));
+
+	    $posts_per_page = intval(get_query_var('posts_per_page'));
+	    $current_page = $paged ? $paged : 1;
+		$start = 1;
+		if(1 < $paged){
+			$start = ($paged - 1) * $posts_per_page + 1;
+		}
+
+		$end = $posts_per_page * $current_page;
+		if($current_page == $wp_query->max_num_pages){
+			$end = $wp_query->found_posts;
+		}
+
+	    echo sprintf('<div class="postsnumber">%d ～ %d 件目を表示 (全 %d件)</div>', $start, $end, $wp_query->found_posts);
 	}
 
 	//////////////////////////////////////////////////////
@@ -327,6 +303,10 @@ class BirdSTARFunctions {
 		wp_enqueue_script( 'jquery-masonry' );
 		wp_enqueue_script( 'birdstar', get_template_directory_uri() .'/js/birdstar.js', 'jquery', '1.00' );
 		wp_enqueue_style( 'birdstar', get_stylesheet_uri() );
+
+		if ( strtoupper( get_locale() ) == 'JA' ) {
+			wp_enqueue_style( 'birdstar_ja', get_template_directory_uri().'/css/ja.css' );
+		}
 	}
 
 	//////////////////////////////////////////////////////
@@ -470,4 +450,376 @@ class BirdSTARFunctions {
 	</style>
 	<?php
 	}
+
+	//////////////////////////////////////////////////////
+	// maker the custom post type
+	function my_custom_post_type() {
+
+	    $labels = array(
+	        'name'                => 'お菓子メーカー',
+	        'all_items'           => 'お菓子メーカーの一覧',
+	    );
+
+	    $args = array(
+	        'labels'              => $labels,
+	        'public'              => true,       // 公開するかどうが
+	        'show_ui'             => true,       // メニューに表示するかどうか
+	        'menu_position'       => 5,          // メニューの表示位置
+	        'has_archive'         => true,       // アーカイブページの作成
+	        'rewrite'             => true,
+	        'supports'            => array( 'title', 'custom-fields' )
+	    );
+	    register_post_type( 'maker', $args );
+	}
+
+	//////////////////////////////////////////////////////
+	// cateory type
+	public function the_categorytype() {
+
+		$categorytype = array( "snack" => "スナック", "chocolate" => "チョコ", "cookie" => "洋菓子", "candy" => "飴など", "senbei" => "和風" );
+
+		// category
+		foreach( ( get_the_category( $post->ID ) ) as $cat ) {
+			$cat_parent = get_category( $cat->parent );
+			if( "type" == $cat_parent->slug ){
+				echo '<div class="category-type"><a href="' .get_category_link( $cat->cat_ID ) .'">' .$categorytype[$cat->slug] .'</a></div>';
+				break;
+			}
+		}
+
+	}
+
+	//////////////////////////////////////////////////////
+	// Archive Number
+	function archive_query( $query ) {
+		if ( !is_admin() && $query->is_main_query() && $query->is_archive() ){
+			$query->set( 'posts_per_page', '30' );
+
+			if(is_post_type_archive('maker') ){
+				$query->set( 'orderby', 'meta_value' );
+				$query->set( 'meta_key', 'furigana' );
+				$query->set( 'order', 'ASC' );
+			}
+
+		}
+	}
+
+	//////////////////////////////////////////////////////
+	// maker price
+	function the_okashidata() {
+
+		$my_posts = get_field('maker', $post->ID);
+		if( $my_posts && is_array($my_posts)):
+			foreach( $my_posts as $p) :
+			?>
+				<a href="<?php echo get_permalink($p); ?>"><?php echo get_the_title($p); ?></a>
+					<?php $price = get_field('price', $post->ID);
+						if(!empty($price)){
+							echo ' ', $price .'円';
+						}
+					?>
+			<?php
+			endforeach;
+		endif;
+	}
+
+	//////////////////////////////////////////
+	// display maker
+	function the_okashimaker($ID) {
+
+		$maker = birdSTAR::get_okashimaker($ID);
+		if(!empty($maker)){
+			echo '<span class="maker">' .$maker .'</span>';
+		}
+	}
+
+	//////////////////////////////////////////
+	// get maker
+	function get_okashimaker($ID) {
+
+
+
+		$my_posts = get_field('maker', $ID);
+		if( $my_posts && is_array($my_posts)):
+			foreach( $my_posts as $p) :
+				return get_the_title($p);
+			endforeach;
+			wp_reset_postdata();
+		endif;
+	}
+
+	//////////////////////////////////////////////////////
+	// Show Posts Images
+	function the_images($id) {
+
+		$html = '';
+		$attachments = get_children(array('post_parent' => $id, 'post_type' => 'attachment', 'post_mime_type' => 'image'));
+		$thumbnail_id = get_post_meta($id, "_thumbnail_id", true);
+	    if (is_array($attachments) ){
+			foreach($attachments as $attachment){
+				if($thumbnail_id <> $attachment->ID){
+					$thumbnail = wp_get_attachment_url(intval($attachment->ID));
+					$html .= '<img src="' .$thumbnail .'" alt="写真">';
+				}
+			}
+		}
+
+		if(!empty($html)){
+			$html = '<div class="photos">' .$html .'</div>' ."\r\n";
+			echo $html;
+		}
+	}
+
+	//////////////////////////////////////////////////////
+	// Category title
+	function get_category_title() {
+
+		$title = '';
+	
+		if(is_category()) {
+			$title = sprintf( '「%s」に関するお菓子', single_cat_title( '', false ) );
+		}
+		elseif( is_tag() ) {
+			$title = sprintf( '「%s」に関するお菓子', single_tag_title( '', false ) );
+		}
+		elseif (is_day()) {
+			$title = sprintf( '%sのお菓子', get_post_time( get_option( 'date_format' ) ) );
+		}
+		elseif (is_month()) {
+			$title = sprintf( '%sのお菓子', get_post_time( __( 'F, Y', 'birdstar' ) ) );
+		}
+		elseif (is_year()) {
+			$title = sprintf( '%sのお菓子', get_post_time( __( 'Y', 'birdstar' ) ) );
+		}
+		elseif (is_author()) {
+			$title = sprintf( '%sが食べたお菓子', get_the_author_meta('display_name', get_query_var('author')) );
+		}
+		elseif (is_post_type_archive()) {
+			$post_type = get_post_type_object( get_query_var( 'post_type' ) );
+			echo $post_type->label;
+		}
+		elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
+			$title = __('Blog Archives', 'birdstar');
+		}
+		
+		return $title;
+	}
+
+	//////////////////////////////////////////////////////
+	// Yearly Archive
+	function birdmagazine_yearly ( $atts ) {
+
+		$output = '';
+
+		$home = home_url( '/' );
+		$year = date("Y");
+
+		for($y = $year; $y >=1996; $y--){
+
+$output .= <<<EOD
+			<li><a href="$home/$y">{$y}年</a></li>
+EOD;
+		}
+
+		if( $output ) {
+			$output = '<ul class="archive">' . $output . '</ul>';
+		}
+
+		return $output;
+	}
 }
+
+//////////////////////////////////////////
+// SinglePage Comment callback
+function birdstar_the_comments( $comment, $args, $depth ) {
+
+	$GLOBALS['comment'] = $comment;
+
+?>
+	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+
+	<?php if( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ):
+		$birstips_url    = get_comment_author_url();
+		$birstips_author = get_comment_author();
+	 ?> 
+
+		<div class="posted"><strong><?php _e( 'Pingback', 'birdstar' ); ?> : </strong><a href="<?php echo $birstips_url; ?>" target="_blank" class="web"><?php echo $birstips_author ?></a><?php edit_comment_link( __('(Edit)', 'birdstar'), ' ' ); ?></div>
+
+	<?php else: ?>
+
+		<div class="comment_meta">
+			<?php echo get_avatar( $comment, 40 ); ?>
+			<span class="author"><?php comment_author(); ?></span>
+			<span class="postdate"><?php echo get_comment_time(get_option('date_format') .' ' .get_option('time_format')); ?></span><?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+		</div>
+		<?php if ( $comment->comment_approved == '0' ) : ?>
+			<em><?php _e( 'Your comment is awaiting moderation.', 'birdstar' ); ?></em>
+		<?php endif; ?>
+
+		<div class="comment_text">
+			<?php comment_text(); ?>
+
+			<?php $birdstar_web = get_comment_author_url(); ?>
+			<?php if(!empty($birdstar_web)): ?>
+				<p class="web"><a href="<?php echo $birdstar_web; ?>" target="_blank"><?php echo $birdstar_web; ?></a></p>
+			<?php endif; ?>
+		</div>
+
+	<?php endif; ?>
+<?php
+	// no "</li>" conform WORDPRESS
+}
+
+//////////////////////////////////////////////////////
+// Widget Recent Posts
+class birdstar_relation_posts extends WP_Widget {
+	function birdstar_relation_posts() {
+    	parent::WP_Widget(false, $name = '関連するお菓子');
+    }
+    function widget($args, $instance) {
+
+		if(!is_single() || 'post' != get_post_type()){
+			return;
+		}
+
+        extract( $args );
+        $title = apply_filters( 'widget_title', $instance['title'] );
+
+		$tags = '';
+		$posttags = get_the_tags();
+		foreach($posttags as $tag) {
+			if(!empty($tags)){
+				$tags .= ',';
+			}
+			$tags .= $tag->name;
+			break;
+		}
+
+		$html = '';
+		// 検索パラメータを設定
+		$param = array( 'showposts' => 10, 'post_type' => 'post', 'exclude' =>get_the_ID() ,'tag' => $tags, 'orderby' => 'rand' );
+
+		// WordPressのループ処理
+		$myposts = get_posts($param);
+		foreach($myposts as $post){
+
+		    setup_postdata($post);  // 1件の投稿
+
+		    // タイトル
+		    $ti = get_the_title($post->ID);
+
+		    // パーマリンク    
+		    $ur = get_permalink($post->ID);
+
+		    // アイキャッチ
+			$th =  get_the_post_thumbnail($post->ID, 'thumbnail');
+
+			// カテゴリー
+			$type = '';
+			foreach((get_the_category($post->ID)) as $cat) {
+				$cat_parent = get_category($cat->parent);
+				if("type" == $cat_parent->slug){
+					$type = $cat->category_nicename;
+					break;
+				}
+			}
+
+			$html .= '<li class="category-' .$type .'"><a href="' .$ur .'">' .$th .'<strong>' .$ti .'</strong></a></li>';
+		}
+
+		if(!empty($html)){
+			$html = '<ul class="recent">' .$html .'</ul>';
+		}
+
+    	?>
+        <div class="widget">
+            <?php if ( $title ) ?>
+        	<?php echo $before_title . $title . $after_title; ?>
+			<?php echo $html; ?>
+        </div>
+        <?php
+    }
+    function update($new_instance, $old_instance) {
+	$instance = $old_instance;
+	$instance['title'] = strip_tags($new_instance['title']);
+	$instance['body'] = trim($new_instance['body']);
+        return $instance;
+    }
+    function form($instance) {
+        $title = esc_attr($instance['title']);
+        $body = esc_attr($instance['body']);
+        ?>
+        <p>
+          <label for="<?php echo $this->get_field_id('title'); ?>">
+          <?php _e('タイトル:'); ?>
+          </label>
+          <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+        </p>
+        <?php
+    }
+}
+add_action('widgets_init', create_function('', 'return register_widget("birdstar_relation_posts");'));
+
+
+//////////////////////////////////////////////////////
+// Widget Yaerly
+class birdstar_yaerly_widgets extends WP_Widget {
+	function birdstar_yaerly_widgets() {
+    	parent::WP_Widget(false, $name = '年代別お菓子');
+    }
+    function widget($args, $instance) {
+
+		if(!is_year()){
+			return;
+		}
+
+        extract( $args );
+        $title = apply_filters( 'widget_title', $instance['title'] );
+
+		$output = '';
+
+		if(!empty($html)){
+			$html = '<ul class="yearly">' .$html .'</ul>';
+		}
+
+		$home = home_url( '/' );
+		$year = date("Y");
+
+		for($y = $year; $y >=1996; $y--){
+$output .= <<<EOD
+	<li><a href="$home/$y">{$y}年</a></li>
+EOD;
+		}
+
+		if( $output ) {
+			$output = '<ul class="yearly">' . $output . '</ul>';
+		}
+
+    	?>
+        <div class="widget">
+            <?php if ( $title ) ?>
+        	<?php echo $before_title . $title . $after_title; ?>
+			<?php echo $output; ?>
+        </div>
+        <?php
+    }
+    function update($new_instance, $old_instance) {
+	$instance = $old_instance;
+	$instance['title'] = strip_tags($new_instance['title']);
+	$instance['body'] = trim($new_instance['body']);
+        return $instance;
+    }
+    function form($instance) {
+        $title = esc_attr($instance['title']);
+        $body = esc_attr($instance['body']);
+        ?>
+        <p>
+          <label for="<?php echo $this->get_field_id('title'); ?>">
+          <?php _e('タイトル:'); ?>
+          </label>
+          <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+        </p>
+        <?php
+    }
+}
+add_action('widgets_init', create_function('', 'return register_widget("birdstar_yaerly_widgets");'));
