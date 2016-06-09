@@ -1,17 +1,13 @@
-<div id="sidebar" role="complementary">
-	<?php if ( ! dynamic_sidebar( 'widget-area-sidebar' ) ) : ?>
+<?php
+/**
+ * The template for the sidebar containing the main widget area
+ *
+ * @package WordPress
+ * @subpackage BirdSTAR
+ * @since BirdSTAR 1.0
+ */
+?>
 
-		<aside id="search" class="widget widget_search">
-			<?php get_search_form(); ?>
-		</aside>
-
-		<aside id="meta" class="widget">
-			<h3 class="widget-title"><?php _e( 'Meta', 'birdstar' ); ?></h3>
-			<ul>
-				<?php wp_register(); ?>
-				<aside><?php wp_loginout(); ?></aside>
-				<?php wp_meta(); ?>
-			</ul>
-		</aside>
-	<?php endif; ?>
-</div>
+<aside id="secondary" class="sidebar widget-area" role="complementary">
+	<?php dynamic_sidebar( 'widget-area-sidebar' ); ?>
+</aside><!-- .sidebar .widget-area -->

@@ -1,35 +1,50 @@
 <?php
-/*
-The template for displaying Search Results pages.
-*/
+/**
+ * The template for displaying search results pages.
+ *
+ * @package WordPress
+ * @subpackage BirdSTAR
+ * @since BirdSTAR 1.0
+ */
 get_header(); ?>
 
-<div class="container">
-	<div id="main">
-		<div id="content">
+<div id="content" class="site-content">
+	<div class="container">
+		<div id="primary" class="content-area">
 
-		<header class="content-header">
-		<h1 class="content-title"><?php printf(__('Search Results: %s', 'birdstar'), esc_html($s) ); ?></h1>
-		</header>
+		<article class="hentry">
 
-		<?php if (have_posts()) : ?>
+			<header class="entry-header">
+			<h1 class="entry-title"><?php printf( __( 'Search Results: %s', 'birdstar' ), esc_html( $s ) ); ?></h1>
+			</header>
 
-			<ul class="archive">
-			<?php while (have_posts()) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
-			</ul>
-			<div class="tablenav"><?php BirdSTAR::the_pagenation(); ?></div>
+			<?php if ( have_posts() ) : ?>
 
-		<?php else: ?>
-			<p><?php printf(__('Sorry, no posts matched &#8216;%s&#8217;', 'birdstar'), esc_html($s) ); ?>
-		<?php endif; ?>
-	
-		</div><!-- #content -->
-	</div><!-- #main -->
+				<ul class="article">
+					<?php while ( have_posts() ) : the_post(); ?>
+						<?php get_template_part( 'content', 'archive' ); ?>
+					<?php endwhile; ?>
+				</ul>
 
-	<?php get_sidebar('left'); ?>
+				<?php $birdstar_pagination = get_the_posts_pagination( array(
+						'mid_size'	=> 3,
+						'screen_reader_text'	=> 'pagination',
+					) );
 
-</div><!-- .container -->
+					$birdstar_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $birdstar_pagination );
+					echo $birdstar_pagination; ?>
+
+			<?php else: ?>
+				<p><?php printf( __( 'Sorry, no posts matched &#8216;%s&#8217;', 'birdstar' ), esc_html( $s ) ); ?>
+			<?php endif; ?>
+
+		</article>
+
+		</div><!-- /primary -->
+
+		<?php get_sidebar(); ?>
+
+	</div>
+</div><!-- /content -->
 
 <?php get_footer(); ?>

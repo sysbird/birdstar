@@ -1,17 +1,21 @@
 <?php
-/*
-The template for displaying 404 pages (Not Found).
-*/
+/**
+ * The template for displaying 404 pages (Not Found).
+ *
+ * @package WordPress
+ * @subpackage BirdSTAR
+ * @since BirdSTAR 1.0
+ */
 get_header(); ?>
 
-<div class="container">
-	<div id="main">
-		<div id="content">
+<div id="content" class="site-content">
+	<div class="container">
+		<div id="primary" class="content-area">
 
 		<article class="hentry">
 
 	<header class="entry-header">
-		<h1 class="entry-title"><?php _e('Error 404 - Not Found', 'birdstar'); ?></h1>
+		<h1 class="entry-title"><?php _e( 'Error 404 - Not Found', 'birdstar' ); ?></h1>
 	</header>
 
 	<div class="entry-content">
@@ -20,11 +24,11 @@ get_header(); ?>
 
 		</article>
 
-		</div><!-- #content -->
-	</div><!-- #main -->
+		</div><!-- /primary -->
 
-	<?php get_sidebar('left'); ?>
+		<?php get_sidebar(); ?>
 
-</div><!-- .container -->
+	</div>
+</div><!-- /content -->
 
 <?php get_footer(); ?>

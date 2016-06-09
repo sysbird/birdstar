@@ -1,25 +1,35 @@
 <?php
-/*
-The main template file.
-*/
+/**
+ * The main template file
+ *
+ * @package WordPress
+ * @subpackage BirdSTAR
+ * @since BirdSTAR 1.0
+ */
 get_header(); ?>
 
-<div class="container">
-	<div id="main">
-		<div id="content">
-
+<div id="content" class="site-content">
+	<div class="container">
+		<div id="primary" class="content-area">
 			<ul class="article">
 				<?php while ( have_posts() ) : the_post(); ?>
 					<?php get_template_part( 'content', get_post_format() ); ?>
 				<?php endwhile; ?>
 			</ul>
-			<div class="tablenav"><?php BirdSTAR::the_pagenation(); ?></div>
 
-		</div><!-- #content -->
-	</div><!-- #main -->
+			<?php $birdstar_pagination = get_the_posts_pagination( array(
+					'mid_size'	=> 3,
+					'screen_reader_text'	=> 'pagination',
+				) );
 
-	<?php get_sidebar('left'); ?>
+			$birdfield_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $birdstar_pagination );
+			echo $birdstar_pagination; ?>
 
-</div><!-- .container -->
+		</div><!-- /primary -->
+
+		<?php get_sidebar(); ?>
+
+	</div>
+</div><!-- /content -->
 
 <?php get_footer(); ?>

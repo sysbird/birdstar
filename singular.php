@@ -1,19 +1,21 @@
 <?php
-/*
-The Template for displaying all single posts.
-*/
+/**
+ * The Template for displaying all single posts.
+ *
+ * @package WordPress
+ * @subpackage BirdFILED
+ * @since BirdFILED 1.0
+ */
 get_header(); ?>
 
-<div class="container">
-	<div id="main">
-		<div id="content">
-			<?php if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) { WP_SiteManager_bread_crumb::bread_crumb(); } ?>
+<div id="content" class="site-content">
+	<div class="container">
+		<div id="primary" class="content-area">
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php get_template_part( 'content', get_post_format() ); ?>
-		<div id="rakuten"></div>
 		<?php comments_template( '', true ); ?>
 	</article>
 
@@ -24,11 +26,11 @@ get_header(); ?>
 
 <?php endwhile; ?>
 
-		</div><!-- #content -->
-	</div><!-- #main -->
+		</div><!-- /primary -->
 
-	<?php get_sidebar('left'); ?>
+		<?php get_sidebar(); ?>
 
-</div><!-- .container -->
+	</div>
+</div><!-- /content -->
 
 <?php get_footer(); ?>
