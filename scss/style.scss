@@ -19,13 +19,13 @@ This theme, like WordPress, is licensed under the GPL.
 
 // variable
 $background-color: #FFF;
-$header-background-color: #EEE;
+$header-background-color: #faee64;
 $text-color: #222327;
 $link-color: #1c4bbe;
 $hover-background-color: #F5F5F5;
 $border-color: #E6E6E6;
 $meta-color: #999;
-$accent-color: #999;
+$accent-color: #2b3876;
 
 /*------------------------------
 Font Awesome
@@ -482,7 +482,7 @@ ol {
 }
 
 dl {
-	margin:0 0 1em 0;
+	margin:0 0 1.6em 0;
 	line-height: 1.6;
 
 	dt {
@@ -520,43 +520,52 @@ ins {
 			width: 7em;
 			float: left;
 			padding: 0.4em 0;
-			border-bottom: 1px solid $border-color;
+			border-top: 1px solid $border-color;
 		}
 
 		dd {
 			margin: 0 0 0 8em;
 			padding: 0.4em 0;
-			border-bottom: 1px solid $border-color;
+			border-top: 1px solid $border-color;
 			@include clearfix;
+		}
+	}
+
+	.photos {
+		text-align: center;
+
+		img {
+			display: block;
+			margin-bottom: 1.6em;
 		}
 	}
 }
 
 /* Archive
 -------------------------------------------------------------------- */
-.archive,
-.search {
-	.article {
-		li {
+ul.list {
+	margin: 0;
+	padding: 0;
+
+	li {
+		margin-bottom: 0;
+		border-top: solid 1px $border-color;
+
+		a {
+			color: $text-color;
+			padding: 0.4em 0;
+			display: -webkit-flex;
+			display: flex;
+		}
+
+		span {
+			flex: 2;
 			margin-bottom: 0;
-			border-top: solid 1px $border-color;
+		}
 
-			a {
-				color: $text-color;
-				padding: 0.4em 0;
-				display: -webkit-flex;
-				display: flex;
-			}
-
-			span {
-				flex: 2;
-				margin-bottom: 0;
-			}
-
-			em {
-				flex: 1;
-				text-align: right;
-			}
+		em {
+			flex: 1;
+			text-align: right;
 		}
 	}
 }
@@ -884,123 +893,154 @@ form {
 .widget-area {
 
 	@include clearfix;
+}
 
-	.widget {
+.widget {
+	overflow: hidden;
+	margin-bottom: 1.6em;
+
+	a {
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.widget_image img {
+		height: auto;
+		max-width: 100%;
+	}
+
+	h3 {
+		font-size: 1.4rem;
+		font-weight: normal;
+		margin: 0 0 0.4em 0;
+		padding: 0 0 0.4em 0;
+		border-bottom: solid 2px $border-color;
+		border-left: none;
+
+		font-size: 1.4rem;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin-left: 0;
 		overflow: hidden;
-		margin-bottom: 1.6em;
+
+		li {
+			margin-top: -1px;
+			border-top: dotted 1px $border-color;
+			padding: 0.3em 0 0.3em 0.6em;
+			text-indent: -0.3em;
+
+			&:before {
+				@include font-awesome("\f105", 0, 0.4em);
+			}
+
+			ul {
+				padding: 0.5em 0 0 0.5em;
+			}
+		}
+	}
+
+	table {
+		width: 100%;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.textwidget {
+		line-height: 1.4;
 
 		a {
-			text-decoration: none;
+			text-decoration: underline;
+		}
+	}
 
-			&:hover {
-				text-decoration: underline;
-			}
+	#wp-calendar {
+		/* Calendar Widget */
+		border-collapse: collapse;
+		border-spacing: 0;
+
+		caption {
+			font-size: 1.2em;
+			font-weight: bold;
 		}
 
-		.widget_image img {
-			height: auto;
-			max-width: 100%;
-		}
-
-		h3 {
-			font-size: 1.4rem;
-			font-weight: normal;
-			margin: 0 0 0.4em 0;
-			padding: 0 0 0.4em 0;
-			border-bottom: solid 2px $border-color;
-			border-left: none;
-
-			font-size: 1.4rem;
-		}
-
-		ul {
-			list-style: none;
-			padding: 0;
-			margin-left: 0;
-			overflow: hidden;
-
-			li {
-				margin-top: -1px;
-				border-top: dotted 1px $border-color;
-				padding: 0.3em 0 0.3em 0.6em;
-				text-indent: -0.3em;
-
-				&:before {
-					@include font-awesome("\f105", 0, 0.4em);
-				}
-
-				ul {
-					padding: 0.5em 0 0 0.5em;
-				}
-			}
-		}
-
-		table {
-			width: 100%;
-			margin-bottom: 0;
-			padding-bottom: 0;
-		}
-
-		.textwidget {
-			line-height: 1.4;
-
-			a {
-				text-decoration: underline;
-			}
-		}
-
-		#wp-calendar {
-			/* Calendar Widget */
-			border-collapse: collapse;
-			border-spacing: 0;
-
-			caption {
-				font-size: 1.2em;
-				font-weight: bold;
-			}
-
-			tbody {
-				th,
-				td {
-					text-align: center;
-					border-top: 1px solid $border-color;
-					padding: 8px;
-
-					a {
-						font-weight: bold;
-						display: block;
-						padding: 2px 0;
-						margin: 0 auto;
-						background: #FFF;
-						color: $accent-color;
-						border-radius: 2px;
-					}
-				}
-			}
-
-			thead {
-				th {
-					padding: 8px;
-					text-align: center;
-				}
-			}
-
-
-			tfoot {
+		tbody {
+			th,
+			td {
+				text-align: center;
 				border-top: 1px solid $border-color;
+				padding: 8px;
 
 				a {
-					font-size: 1.2em;
-				}
-
-				#next {
-					text-align: right;
-				}
-
-				td {
-					padding: 8px 0;
+					font-weight: bold;
+					display: block;
+					padding: 2px 0;
+					margin: 0 auto;
+					background: #FFF;
+					color: $accent-color;
+					border-radius: 2px;
 				}
 			}
+		}
+
+		thead {
+			th {
+				padding: 8px;
+				text-align: center;
+			}
+		}
+
+
+		tfoot {
+			border-top: 1px solid $border-color;
+
+			a {
+				font-size: 1.2em;
+			}
+
+			#next {
+				text-align: right;
+			}
+
+			td {
+				padding: 8px 0;
+			}
+		}
+	}
+}
+
+/* Widget
+--------------------------------------------- */
+.widget {
+	.recent {
+		li {
+			@include clearfix;
+
+			a {
+				display: block;
+			}
+			
+			&:before {
+				display: none;;
+			}
+		}
+
+		.entry-eyecatch {
+			display: block;
+			width: 30%;
+			float: left;
+			margin: 0;
+		}
+		
+		strong {
+			display: block;
+			font-weight: normal;
+			margin-left: 32%;
 		}
 	}
 }
@@ -1304,19 +1344,19 @@ form {
 		}
 	}
 
-	.single,
+	.single-post,
 	.home {
 		.site-content {
 			.hentry {
 				position: relative;
 				min-height: 300px;
-			}
 
-			.entry-eyecatch {
-				position: absolute;
-				top: 5px;
-				left: 0;
-				width: 30%;
+				.entry-eyecatch {
+					position: absolute;
+					top: 5px;
+					left: 0;
+					width: 30%;
+				}
 			}
 
 			&:not([class*="no-eyecatch"]) {

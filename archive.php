@@ -12,9 +12,11 @@ get_header(); ?>
 	<div class="container">
 		<div id="primary" class="content-area">
 
+		<?php if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) { WP_SiteManager_bread_crumb::bread_crumb(); } ?>
+
 		<article class="hentry">
-			<header class="content-header">
-				<h1 class="content-title"><?php
+			<header class="page-header">
+				<h1 class="page-title"><?php
 					if(is_category()) {
 						printf(__( 'Category Archives: %s', 'birdstar' ), single_cat_title( '', false ) );
 					}
@@ -33,6 +35,13 @@ get_header(); ?>
 					elseif (is_author()) {
 						printf(__('Author Archives: %s', 'birdstar' ), get_the_author_meta( 'display_name', get_query_var( 'author' ) ) );
 					}
+					elseif (is_author()) {
+						$title = sprintf( '%sが投稿した記事', get_the_author_meta('display_name', get_query_var('author')) );
+					}
+					elseif (is_post_type_archive()) {
+						$post_type = get_post_type_object( get_query_var( 'post_type' ) );
+						echo $post_type->label;
+					}
 					elseif ( isset($_GET['paged'] ) && !empty($_GET['paged'] ) ) {
 						_e( 'Blog Archives', 'birdstar' );
 					}
@@ -40,7 +49,7 @@ get_header(); ?>
 			</header>
 
 			<?php if ( have_posts() ) : ?>
-				<ul class="article">
+				<ul class="list">
 					<?php while ( have_posts() ) : the_post(); ?>
 						<?php get_template_part( 'content', 'archive' ); ?>
 					<?php endwhile; ?>

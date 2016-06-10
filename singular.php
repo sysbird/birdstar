@@ -12,6 +12,8 @@ get_header(); ?>
 	<div class="container">
 		<div id="primary" class="content-area">
 
+		<?php if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) { WP_SiteManager_bread_crumb::bread_crumb(); } ?>
+
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

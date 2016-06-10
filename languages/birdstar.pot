@@ -1,0 +1,200 @@
+# Translation of the WordPress theme BirdFIELD 1.09 by sysbird
+# Copyright (C) Sysbird
+# This file is distributed under the same license as the BirdFIELD package.
+# FIRST AUTHOR <sysbird@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: BirdFIELD 1.08\n"
+"Report-Msgid-Bugs-To: http://www.sysbird.jp/wptips/\n"
+"POT-Creation-Date: 2015-09-09 00:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: sysbird <sysbird@gmail.com>\n"
+"Language-Team: sysbird <sysbird@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: 404.php:16
+msgid "Error 404 - Not Found"
+msgstr ""
+
+#: 404.php:20
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: archive.php:18
+msgid "Category Archives: %s"
+msgstr ""
+
+#: archive.php:20
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: archive.php:24
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: archive.php:27
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: archive.php:27
+msgid "F, Y"
+msgstr ""
+
+#: archive.php:30
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: archive.php:30
+msgid "Y"
+msgstr ""
+
+#: archive.php:33
+msgid "Author Archives: %s"
+msgstr ""
+
+#: archive.php:36
+msgid "Blog Archives"
+msgstr ""
+
+#: archive.php:57
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: comments.php:18
+msgid "One Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] ""
+
+#: comments.php:25 comments.php:41
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:26 comments.php:42
+msgid "Newer Comments"
+msgstr ""
+
+#: content-home.php:12 content.php:12 news-content.php:22
+msgid "Permalink to %s"
+msgstr ""
+
+#: content-singular.php:23 image.php:78
+msgid "Pages:"
+msgstr ""
+
+#: content-singular.php:33
+msgid "Category"
+msgstr ""
+
+#: content-singular.php:34
+msgid "Tags"
+msgstr ""
+
+#: footer.php:22
+msgid "Copyright &copy; %s All Rights Reserved."
+msgstr ""
+
+#: footer.php:27
+msgid "Proudly powered by WordPress"
+msgstr ""
+
+#: footer.php:28
+msgid "BirdFIELD theme by %sSysbird%s"
+msgstr ""
+
+#: footer.php:32
+msgid "Go Top"
+msgstr ""
+
+#: functions.php:22
+msgid "Widget Area for header"
+msgstr ""
+
+#: functions.php:24
+msgid "One text widget for header"
+msgstr ""
+
+#: functions.php:33 functions.php:35
+msgid "Widget Area for footer"
+msgstr ""
+
+#: functions.php:235
+msgid "Navigation Menu"
+msgstr ""
+
+#: functions.php:341
+msgid "Text Color"
+msgstr ""
+
+#: functions.php:353
+msgid "Link Color"
+msgstr ""
+
+#: functions.php:365
+msgid "Header, Footer Background Color"
+msgstr ""
+
+#: functions.php:377
+msgid "Display Parallax"
+msgstr ""
+
+#: functions.php:390
+msgid "Fixed Header"
+msgstr ""
+
+#: functions.php:398
+msgid "Footer"
+msgstr ""
+
+#: functions.php:409
+msgid "Display Copyright"
+msgstr ""
+
+#: functions.php:422
+msgid "Display Credit"
+msgstr ""
+
+#: functions.php:444
+msgid "Continue reading"
+msgstr ""
+
+#: home.php:34
+msgid "RECENT"
+msgstr ""
+
+#: image.php:91
+msgid "Next Image"
+msgstr ""
+
+#: image.php:92
+msgid "Previous Image"
+msgstr ""
+
+#: news-content.php:13
+msgid "NEWS"
+msgstr ""
+
+#: search.php:16
+msgid "Search Results: %s"
+msgstr ""
+
+#: search.php:36
+msgid "Sorry, no posts matched &#8216;%s&#8217;"
+msgstr ""
+
+#: searchform.php:12
+msgid "Search..."
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"BirdFIELD is a responsive web design theme. Feature fullscreen and parallax "
+"custom image, and fixed header. The homepage displays with tagged news and "
+"the grid posts. You can choose the text color, link color, header background "
+"color by theme options."
+msgstr ""
+""

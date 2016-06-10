@@ -22,7 +22,7 @@ get_header(); ?>
 					'screen_reader_text'	=> 'pagination',
 				) );
 
-			$birdfield_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $birdstar_pagination );
+			$birdstar_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $birdstar_pagination );
 			echo $birdstar_pagination; ?>
 
 		</div><!-- /primary -->
