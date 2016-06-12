@@ -39,10 +39,10 @@
 
 	<div class="entry-content">
 
-	<?php if( is_singular() ): ?>
-		<?php the_content(); ?>
-	<?php else: ?>
-		<?php the_excerpt(); ?>
+	<?php the_content(); ?>
+
+	<?php if( is_home() ): ?>
+		<div class="more-link"><a href="<?php the_permalink(); ?>"><?php _e( 'Continue reading', 'birdstar' ); ?></a></div>
 	<?php endif; ?>
 
 	<?php if( is_single() && !is_singular( 'maker' ) ): ?>

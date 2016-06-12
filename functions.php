@@ -211,8 +211,18 @@ add_action( 'after_setup_theme', 'birdstar_setup' );
 // Filter main query at home
 function birdstar_home_query( $query ) {
 
+	if ( is_admin()) {
+		return;
+	}
+
 	if ( $query->is_main_query() && ( $query->is_archive() || $query->is_search() ) ) {
-		$query->set( 'posts_per_page', 3 );
+		$query->set( 'posts_per_page', 30 );
+
+		if(is_post_type_archive('maker') ){
+			$query->set( 'orderby', 'meta_value' );
+			$query->set( 'meta_key', 'furigana' );
+			$query->set( 'order', 'ASC' );
+		}
 	}
 }
 add_action( 'pre_get_posts', 'birdstar_home_query' );
@@ -294,7 +304,7 @@ add_filter( 'post_thumbnail_html', 'birdstar_post_image_html', 10, 3 );
 //  display maker
 function  birdstar_the_maker($ID, $before, $after, $link = true ) {
 
-	$my_posts = get_field('maker', $ID);
+	$my_posts = get_field( 'maker', $ID );
 	if( $my_posts && is_array($my_posts)):
 		foreach( $my_posts as $p) :
 
@@ -331,7 +341,7 @@ function  birdstar_the_price( $ID, $before, $after ) {
 function birdstar_the_entry_footer() {
 
 	echo '<dl>';
-	echo '<dt>投稿日</dt><dd><time class="postdate" datetime="' .get_the_time( 'Y-m-d' ) .'">' .get_post_time( get_option( 'date_format' ) ) .'</time></dd>';
+	echo '<dt>登録日</dt><dd><time class="postdate" datetime="' .get_the_time( 'Y-m-d' ) .'">' .get_post_time( get_option( 'date_format' ) ) .'</time></dd>';
 	echo '<dt>種類</dt><dd>';
 	the_category(', ');
 	echo  '</dd>';
@@ -528,3 +538,29 @@ EOD;
     }
 }
 add_action( 'widgets_init', create_function( '', 'register_widget( "birdstar_yaerly_widgets" );' ) );
+
+//////////////////////////////////////////////////////
+// Yearly Archive
+function birdmagazine_yearly ( $atts ) {
+
+	$output = '';
+
+	$home = home_url( '/' );
+	$year = date("Y");
+
+	for($y = $year; $y >=1996; $y--){
+
+$output .= <<<EOD
+		<li><a href="$home/$y">{$y}年のお菓子</a></li>
+EOD;
+	}
+
+	if( $output ) {
+		$output = '<ul class="list">' . $output . '</ul>';
+	}
+
+	return $output;
+}
+
+add_shortcode( 'birdmagazine_yearly',  'birdmagazine_yearly' );
+

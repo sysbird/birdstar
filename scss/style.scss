@@ -241,32 +241,8 @@ a {
 		color: $text-color;
 	}
 
-	.postdate:before {
-		@include font-awesome("\f133", 0, 0.2em );
-	}
-
-	.author:before {
-		@include font-awesome("\f007", 0, 0.2em );
-	}
-
 	.comment:before {
 		@include font-awesome("\f075", 0, 0.2em );
-	}
-
-	.parent-post-link {
-		a {
-			&:before {
-				@include font-awesome("\f03e", 0, 0.2em );
-			}
-		}
-	}
-
-	.category:before {
-		@include font-awesome( "\f07b", 0, 0.2em );
-	}
-
-	.tag:before {
-		@include font-awesome( "\f02b", 0, 0.2em );
 	}
 }
 
@@ -308,9 +284,13 @@ a {
 }
 
 .more-link {
+	text-align: right;
 
-	&:after {
-		@include font-awesome("\f105", 0.4em, 0);
+	a {
+		font-size: 0.9em;
+		&:after {
+			@include font-awesome("\f105", 0.4em, 0);
+		}
 	}
 }
 
@@ -566,6 +546,7 @@ ul.list {
 		em {
 			flex: 1;
 			text-align: right;
+			font-style: normal;
 		}
 	}
 }
@@ -1024,7 +1005,7 @@ form {
 			a {
 				display: block;
 			}
-			
+
 			&:before {
 				display: none;;
 			}
@@ -1036,7 +1017,7 @@ form {
 			float: left;
 			margin: 0;
 		}
-		
+
 		strong {
 			display: block;
 			font-weight: normal;
@@ -1211,7 +1192,7 @@ form {
 @media screen and (min-width: 660px) {
 
 	.container {
-		max-width: 1000px;
+		max-width: 960px;
 		margin: 0 auto;
 	}
 
@@ -1322,7 +1303,7 @@ form {
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- PCs --- */
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 960px) {
 
 	.container {
 		padding: 0;
@@ -1344,6 +1325,7 @@ form {
 		}
 	}
 
+/*
 	.single-post,
 	.home {
 		.site-content {
@@ -1367,6 +1349,25 @@ form {
 				}
 			}
 		}
+	}
+*/
+	.single-post,
+	.home {
+		.site-content {
+			.hentry {
+				@include clearfix;
+
+				.entry-eyecatch {
+					float: right;
+					margin: 5px 0 0 1.6em;
+				}
+			}
+		}
+
+		.more-link {
+			text-align: left;
+		}
+
 	}
 
 }

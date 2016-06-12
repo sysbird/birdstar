@@ -3,12 +3,12 @@ msgstr ""
 "Project-Id-Version: BirdFIELD 1.09 ja\n"
 "Report-Msgid-Bugs-To: http://www.sysbird.jp/wptips\n"
 "POT-Creation-Date: 2016-03-19 00:00+0300\n"
-"PO-Revision-Date: 2014-12-21 17:00+0900\n"
+"PO-Revision-Date: 2016-06-12 16:08+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.1\n"
 "Last-Translator: TORIYAMA Yuko <sysbird@gmail.com>\n"
 "Language-Team: sysbird <sysbird@gmail.com>\n"
 "Language: ja\n"
@@ -25,11 +25,11 @@ msgstr "お探しのページが見つかりませんでした。検索してみ
 
 #: archive.php:18
 msgid "Category Archives: %s"
-msgstr "「%s」カテゴリーの一覧"
+msgstr "いままでに食べた「%s」"
 
 #: archive.php:20
 msgid "Tag Archives: %s"
-msgstr "「%s」に関する一覧"
+msgstr "「%s」に関するお菓子"
 
 #: archive.php:24
 msgid "Daily Archives: %s"
@@ -53,7 +53,7 @@ msgstr "Y年"
 
 #: archive.php:33
 msgid "Author Archives: %s"
-msgstr "%s による投稿"
+msgstr "%s が食べたお菓子"
 
 #: archive.php:36
 msgid "Blog Archives"
@@ -90,7 +90,7 @@ msgstr "カテゴリー"
 
 #: content-singular.php:34
 msgid "Tags"
-msgstr "タグ"
+msgstr "キーワード"
 
 #: footer.php:22
 msgid "Copyright &copy; %s All Rights Reserved."
@@ -124,57 +124,9 @@ msgstr "ウィジェットエリアフッター"
 msgid "Navigation Menu"
 msgstr "ナビゲーションメニュー"
 
-#: functions.php:341
-msgid "Text Color"
-msgstr "文字色"
-
-#: functions.php:353
-msgid "Link Color"
-msgstr "リンク色"
-
-#: functions.php:365
-msgid "Header, Footer Background Color"
-msgstr "ヘッダ、フッター背景色"
-
-#: functions.php:377
-msgid "Display Parallax"
-msgstr "パララックス表示"
-
-#: functions.php:390
-msgid "Fixed Header"
-msgstr "ヘッダーを固定表示"
-
-#: functions.php:398
-msgid "Footer"
-msgstr "フッター"
-
-#: functions.php:409
-msgid "Display Copyright"
-msgstr "コピーライトを表示"
-
-#: functions.php:422
-msgid "Display Credit"
-msgstr "クレジットを表示"
-
 #: functions.php:444
 msgid "Continue reading"
 msgstr "続きを読む"
-
-#: home.php:34
-msgid "RECENT"
-msgstr "新着"
-
-#: image.php:91
-msgid "Next Image"
-msgstr "次の画像へ"
-
-#: image.php:92
-msgid "Previous Image"
-msgstr "前の画像へ"
-
-#: news-content.php:13
-msgid "NEWS"
-msgstr "お知らせ"
 
 #: search.php:16
 msgid "Search Results: %s"
@@ -190,12 +142,12 @@ msgstr "検索…"
 
 #. Description of the plugin/theme
 msgid ""
-"BirdFIELD is a responsive web design theme. Feature fullscreen and parallax "
+"BirdSTAR is a responsive web design theme. Feature fullscreen and parallax "
 "custom image, and fixed header. The homepage displays with tagged news and "
 "the grid posts. You can choose the text color, link color, header background "
 "color by theme options."
 msgstr ""
-"BirdFIELDは、レスポンシブWebデザインのWordPressテーマです。カスタムヘッダーの"
+"BirdSTARは、レスポンシブWebデザインのWordPressテーマです。カスタムヘッダーの"
 "背景画像をパララックス効果で表示します。newsとタグ付けされた投稿を、トップ"
 "ページの「お知らせ」として表示します。その他の投稿一覧をグリッド表示します。"
 "テーマカスタマイズではテキストの色、リンクの色、ヘッダーとフッター背景色を選"

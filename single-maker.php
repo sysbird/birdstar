@@ -32,9 +32,9 @@ get_header(); ?>
 				$args = array(
 					'posts_per_page'	=> $posts_per_page,
 					'offset'			=> $offset,
-					'post_type'			=> 'post',
+					'post_type'		=> 'post',
 					'post_status'		=> 'publish',
-					'meta_query' => array(
+					'meta_query'		=> array(
 						array(
 							'key' => 'maker',
 							'value' => $post->ID,
